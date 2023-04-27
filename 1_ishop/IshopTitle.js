@@ -5,6 +5,6 @@ var IshopTitle = React.createClass({
 		title: React.PropTypes.string.isRequired,
 	},
 	render: function() {
-		return React.DOM.h2({className: 'ishop_title'}, this.props.title);
+		return React.DOM.h1({className: 'ishop_title'}, this.props.title);
 	},
 });

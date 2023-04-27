@@ -1,2 +1,7 @@
 /* ------------------------- Style -------------------------- */
-
+.ishop_title {
+	padding: 15px;
+	border-radius: 15px;
+	background-color: white;
+	color: red;
+}
