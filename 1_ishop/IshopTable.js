@@ -28,7 +28,6 @@ var IshopTable = React.createClass({
 				buffer.cookie = [];
 			}
 		});
-		console.log(buffer.result)
 		return React.DOM.table({className: 'ishop_table'}, 
 			React.DOM.tbody(null, buffer.result));
 	},
