@@ -50,7 +50,7 @@ var IshopTable = React.createClass({
 				cbDeletePos: self.posDelete
 			}));
 			if (((i + 1) % size === 0 && i !== 0) || all.length - 1 === i) {
-				buffer.result.push(React.DOM.tr({key: i,className: 'ishop_table-row'}, buffer.cookie)); //todo: сделать!
+				buffer.result.push(React.DOM.tr({key: i,className: 'ishop_table-row'}, buffer.cookie));
 				buffer.cookie = [];
 			}
 		});
