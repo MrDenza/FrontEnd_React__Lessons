@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		body {
+			background-color: darkorange;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+
+	<script src="https://unpkg.com/react@15/dist/react.js"></script>
+	<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+
+	<script src="Filter.js"></script>
+	<link rel="stylesheet" type="text/css" href="Filter.css"/>
+
+	<script>
+		var list = ['california', 'everything', 'aboveboard', 'washington', 'basketball', 'weathering', 'characters', 'literature', 'contraband', 'appreciate'];
+		ReactDOM.render(
+			  React.createElement(Filter, {list: list}),
+			  document.getElementById('container')
+		);
+	</script>
+</body>
+</html>
+

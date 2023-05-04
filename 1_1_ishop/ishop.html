@@ -29,7 +29,6 @@
 
 	<script>
 		var titleText='Интернет-магазин \"НотеБук\"'; // название
-		var sizeTable = 3; // размер сетки списка
 		var listProducts = [ // входные данные
 			{code: 101, title: 'ASUS ROG Zephyrus M16 GU603ZW', photo: 'img/1.jpeg', sum: 9750, text: '16.0" 2560 x 1600, IPS, 165 Гц, Intel Core i9 12900H, 16 ГБ DDR5, SSD 1024 ГБ, видеокарта NVIDIA GeForce RTX 3070 Ti 8 ГБ, Windows 11 Pro, цвет крышки черный', lot: 102},
 			{code: 102, title: 'ASUS ZenBook Pro Duo UX8402ZE', photo: 'img/2.jpeg', sum: 9440, text: '14.5" 2880 x 1800, OLED, 120 Гц, сенсорный, Intel Core i9 12900H, 32 ГБ LPDDR5, SSD 1024 ГБ, видеокарта NVIDIA GeForce RTX 3050 Ti 4 ГБ, Windows 10 Pro, цвет крышки черный', lot: 202},
@@ -43,9 +42,11 @@
 			{code: 110, title: 'ASUS TUF Gaming Dash F15 2022 FX517ZR', photo: 'img/9.jpeg', sum: 5040, text: '15.6" 1920 x 1080, IPS, 144 Гц, Intel Core i7 12650H, 16 ГБ DDR5, SSD 512 ГБ, видеокарта NVIDIA GeForce RTX 3070 8 ГБ, Windows 11, цвет крышки черный', lot: 1002},
 		];
 		ReactDOM.render(
-			  React.createElement(IshopBox, {title: titleText, widthTablePos: sizeTable, products: listProducts}),
+			  React.createElement(IshopBox, {title: titleText, products: listProducts}),
 			  document.getElementById('container')
 		);
 	</script>
 </body>
 </html>
+
+<img src="" alt="">
