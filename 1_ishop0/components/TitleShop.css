@@ -1,0 +1,15 @@
+﻿.TitleShop
+{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+.TitleShop_Text
+{
+    padding: 15px;
+    display: inline-block;
+    background-color: white;
+    border-radius: 20px;
+    color: red;
+}
