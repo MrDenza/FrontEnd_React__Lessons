@@ -401,7 +401,7 @@ var _TitleShop2 = _interopRequireDefault(_TitleShop);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_TitleShop2.default, { question: "Интернет-магазин \"НотеБук\"" }), document.getElementById('container'));
+_reactDom2.default.render(_react2.default.createElement(_TitleShop2.default, { title: "Интернет-магазин \"НотеБук\"", address: '\u0411\u0435\u043B\u0430\u0440\u0443\u0441\u044C, \u0433. \u041C\u0438\u043D\u0441\u043A, \u043F\u0440\u043E\u0441\u043F. \u041F\u043E\u0431\u0435\u0434\u0438\u0442\u0435\u043B\u0435\u0439, \u0434. 9' }), document.getElementById('container'));
 
 /***/ }),
 /* 5 */
@@ -30502,11 +30502,16 @@ var TitleShop = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'TitleShop' },
+        { className: 'TitleBox' },
         _react2.default.createElement(
           'h1',
-          { className: 'TitleShop_Text' },
-          this.props.question
+          { className: 'TitleBox_text' },
+          this.props.title
+        ),
+        _react2.default.createElement(
+          'address',
+          { className: 'TitleBox_address' },
+          "Адрес: " + this.props.address
         )
       );
     }
@@ -30525,4 +30530,4 @@ exports.default = TitleShop;
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=bundle.js.map
+//# sourceMappingURL=script_react.js.map

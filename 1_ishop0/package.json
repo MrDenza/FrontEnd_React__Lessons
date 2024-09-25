@@ -1,11 +1,11 @@
 {
-  "name": "votesblock",
+  "name": "ishop",
   "version": "1.0.0",
-  "description": "блок голосования",
-  "main": "App.js",
+  "description": "Интернет магазин",
+  "main": ".\\source\\App.js",
   "scripts": {
     "build": ".\\node_modules\\.bin\\webpack",
-    "livebuild": ".\\node_modules\\.bin\\webpack-dev-server --progress --colors"
+    "livebuild": ".\\node_modules\\.bin\\webpack-dev-server --content-base public/ --progress --colors"
   },
   "author": "",
   "license": "ISC",

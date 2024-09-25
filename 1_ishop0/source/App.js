@@ -4,6 +4,6 @@ import ReactDOM from 'react-dom';
 import TitleShop from './components/TitleShop';
 
 ReactDOM.render(
-  <TitleShop question={"Интернет-магазин \"НотеБук\""}/>, 
+  <TitleShop title={"Интернет-магазин \"НотеБук\""} address="Беларусь, г. Минск, просп. Победителей, д. 9"/>, 
   document.getElementById('container') 
 );
