@@ -57,6 +57,8 @@ body {
 .product-list__pos-title {
     padding: 10px 0;
     font-weight: bold;
+    height: 45px;
+    text-align: center;
 }
 .product-list__pos-photo {
     width: 200px;
