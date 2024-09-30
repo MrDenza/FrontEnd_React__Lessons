@@ -1,0 +1,13 @@
+.product-list {
+
+}
+.product-list__title {
+    text-align: center;
+}
+.product-list__box {
+	display: flex;
+	flex-direction: row;
+    flex-wrap: wrap;
+	align-items: stretch;
+	justify-content: center;
+}

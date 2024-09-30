@@ -1,0 +1,20 @@
+﻿.title-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 0 15px 0;
+    text-align: center;
+}
+.title-box__text {
+    padding: 15px;
+    background-color: white;
+    border-radius: 20px;
+    color: red;
+    margin-bottom: 0;
+}
+.title-box__address {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 0 0 20px 20px;
+}
