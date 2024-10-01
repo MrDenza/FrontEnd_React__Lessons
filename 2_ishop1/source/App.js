@@ -8,18 +8,12 @@ let addressShop = "Беларусь, г. Минск, просп. Победит�
 import productDB from "../public/productDatabase.json";
 
 import TitleShop from "./components/TitleShop";
-import ProductListBox from "./components/ProductListBox";
 
 ReactDOM.render(
     <Fragment>
-        <header className = "body__container">
-            <TitleShop title = {titleShop} address = {addressShop}/>
-        </header>
-        <main className = "body__container">
-            <article>
-                <ProductListBox db = {productDB}/>
-            </article>
-        </main>
+        <div className = "body__container">
+            <TitleShop title = {titleShop} address = {addressShop} db = {productDB}/>
+        </div>
     </Fragment>,
     document.getElementById('container') 
 );

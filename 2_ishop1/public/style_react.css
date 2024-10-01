@@ -30,19 +30,19 @@ body {
     padding: 10px;
     border-radius: 0 0 20px 20px;
 }
-.product-list {
-
-}
 .product-list__title {
     text-align: center;
 }
 .product-list__box {
+    margin: 0;
+    padding: 0;
 	display: flex;
 	flex-direction: row;
     flex-wrap: wrap;
 	align-items: stretch;
 	justify-content: center;
-}.product-list__pos {
+}
+.product-list__pos {
     background-color: white;
     border: 1px solid gray;
     border-radius: 15px;
@@ -53,6 +53,7 @@ body {
     width: 100%;
     max-width: 300px;
     margin: 10px;
+    list-style: none;
 }
 .product-list__pos-title {
     padding: 10px 0;
@@ -81,5 +82,5 @@ body {
 .product-list__pos-text {
     font-style: italic;
     text-align: justify;
-}
+} 
 /*# sourceMappingURL=style_react.css.map*/
