@@ -7,12 +7,12 @@ let titleShop = "Интернет-магазин \"НотеБук\"";
 let addressShop = "Беларусь, г. Минск, просп. Победителей, д. 9";
 import productDB from "../public/productDatabase.json";
 
-import TitleShop from "./components/TitleShop";
+import Shop from "./components/Shop";
 
 ReactDOM.render(
     <Fragment>
         <div className = "body__container">
-            <TitleShop title = {titleShop} address = {addressShop} db = {productDB}/>
+            <Shop title = {titleShop} address = {addressShop} db = {productDB}/>
         </div>
     </Fragment>,
     document.getElementById('container') 

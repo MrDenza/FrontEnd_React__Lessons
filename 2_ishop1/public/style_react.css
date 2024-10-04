@@ -54,8 +54,7 @@ body {
     max-width: 300px;
     margin: 10px;
     list-style: none;
-}
-.product-list__pos-title {
+}.product-list__pos-title {
     padding: 10px 0;
     font-weight: bold;
     height: 45px;

@@ -401,16 +401,15 @@ var _productDatabase = __webpack_require__(16);
 
 var _productDatabase2 = _interopRequireDefault(_productDatabase);
 
-var _TitleShop = __webpack_require__(17);
+var _Shop = __webpack_require__(17);
 
-var _TitleShop2 = _interopRequireDefault(_TitleShop);
+var _Shop2 = _interopRequireDefault(_Shop);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var titleShop = "Интернет-магазин \"НотеБук\"";
 var addressShop = "Беларусь, г. Минск, просп. Победителей, д. 9";
 
-//import ProductListBox from "./components/ProductListBox";
 
 _reactDom2.default.render(_react2.default.createElement(
     _react.Fragment,
@@ -418,7 +417,7 @@ _reactDom2.default.render(_react2.default.createElement(
     _react2.default.createElement(
         "div",
         { className: "body__container" },
-        _react2.default.createElement(_TitleShop2.default, { title: titleShop, address: addressShop, db: _productDatabase2.default })
+        _react2.default.createElement(_Shop2.default, { title: titleShop, address: addressShop, db: _productDatabase2.default })
     )
 ), document.getElementById('container'));
 
@@ -30511,6 +30510,10 @@ var _react2 = _interopRequireDefault(_react);
 
 __webpack_require__(18);
 
+var _ProductPos = __webpack_require__(19);
+
+var _ProductPos2 = _interopRequireDefault(_ProductPos);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30519,50 +30522,21 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var TitleShop = function (_React$Component) {
-    _inherits(TitleShop, _React$Component);
+var Shop = function (_React$Component) {
+    _inherits(Shop, _React$Component);
 
-    function TitleShop() {
-        _classCallCheck(this, TitleShop);
+    function Shop() {
+        _classCallCheck(this, Shop);
 
-        return _possibleConstructorReturn(this, (TitleShop.__proto__ || Object.getPrototypeOf(TitleShop)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (Shop.__proto__ || Object.getPrototypeOf(Shop)).apply(this, arguments));
     }
 
-    _createClass(TitleShop, [{
+    _createClass(Shop, [{
         key: "render",
         value: function render() {
             var titleList = "Список товаров:";
             var productList = this.props.db.map(function (p) {
-                return _react2.default.createElement(
-                    "li",
-                    { className: "product-list__pos", key: p.code },
-                    _react2.default.createElement(
-                        "span",
-                        { className: "product-list__pos-title" },
-                        p.title
-                    ),
-                    _react2.default.createElement("img", { className: "product-list__pos-photo", src: p.photo, alt: "\u0412\u043D\u0435\u0448\u043D\u0438\u0439 \u0432\u0438\u0434 " + p.title }),
-                    _react2.default.createElement(
-                        "span",
-                        { className: "product-list__pos-price" },
-                        p.sum + " BYN"
-                    ),
-                    _react2.default.createElement(
-                        "span",
-                        { className: "product-list__pos-lot" },
-                        "\u041E\u0441\u0442\u0430\u0442\u043E\u043A \u043D\u0430 \u0441\u043A\u043B\u0430\u0434\u0435: " + p.lot + " \u0448\u0442."
-                    ),
-                    _react2.default.createElement(
-                        "span",
-                        { className: "product-list__pos-subtitle" },
-                        "\u0425\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0438:"
-                    ),
-                    _react2.default.createElement(
-                        "span",
-                        { className: "product-list__pos-text" },
-                        p.text
-                    )
-                );
+                return _react2.default.createElement(_ProductPos2.default, { key: p.code, title: p.title, photo: p.photo, sum: p.sum, text: p.text, lot: p.lot });
             });
 
             return _react2.default.createElement(
@@ -30604,13 +30578,96 @@ var TitleShop = function (_React$Component) {
         }
     }]);
 
-    return TitleShop;
+    return Shop;
 }(_react2.default.Component);
 
-exports.default = TitleShop;
+exports.default = Shop;
 
 /***/ }),
 /* 18 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(20);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ProductPos = function (_React$Component) {
+    _inherits(ProductPos, _React$Component);
+
+    function ProductPos() {
+        _classCallCheck(this, ProductPos);
+
+        return _possibleConstructorReturn(this, (ProductPos.__proto__ || Object.getPrototypeOf(ProductPos)).apply(this, arguments));
+    }
+
+    _createClass(ProductPos, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "li",
+                { className: "product-list__pos", key: this.props.code },
+                _react2.default.createElement(
+                    "span",
+                    { className: "product-list__pos-title" },
+                    this.props.title
+                ),
+                _react2.default.createElement("img", { className: "product-list__pos-photo", src: this.props.photo, alt: "\u0412\u043D\u0435\u0448\u043D\u0438\u0439 \u0432\u0438\u0434 " + this.props.title }),
+                _react2.default.createElement(
+                    "span",
+                    { className: "product-list__pos-price" },
+                    this.props.sum + " BYN"
+                ),
+                _react2.default.createElement(
+                    "span",
+                    { className: "product-list__pos-lot" },
+                    "\u041E\u0441\u0442\u0430\u0442\u043E\u043A \u043D\u0430 \u0441\u043A\u043B\u0430\u0434\u0435: " + this.props.lot + " \u0448\u0442."
+                ),
+                _react2.default.createElement(
+                    "span",
+                    { className: "product-list__pos-subtitle" },
+                    "\u0425\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0438:"
+                ),
+                _react2.default.createElement(
+                    "span",
+                    { className: "product-list__pos-text" },
+                    this.props.text
+                )
+            );
+        }
+    }]);
+
+    return ProductPos;
+}(_react2.default.Component);
+
+exports.default = ProductPos;
+
+/***/ }),
+/* 20 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -1,0 +1,28 @@
+.product-list__pos-title {
+    padding: 10px 0;
+    font-weight: bold;
+    height: 45px;
+    text-align: center;
+}
+.product-list__pos-photo {
+    width: 200px;
+	height: 130px;
+}
+.product-list__pos-price {
+    padding: 15px 0 5px 0;
+    color: red;
+    font-weight: bolder;
+}
+.product-list__pos-lot {
+    color: blue;
+    padding: 10px 0;
+}
+.product-list__pos-subtitle {
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 10px 0;
+}
+.product-list__pos-text {
+    font-style: italic;
+    text-align: justify;
+} 
