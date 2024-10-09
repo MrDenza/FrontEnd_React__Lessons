@@ -17,7 +17,9 @@ class ProductPos extends React.Component {
         return (
            <li className={`product-list__pos ${(this.props.selectPos === this.props.code) && "product-list__pos_select"}`} onClick={this.enterPos}>
                 <span className="product-list__pos-title">{this.props.title}</span>
-                <img className="product-list__pos-photo" src={this.props.photo} alt={`Внешний вид ${this.props.title}`}></img>
+                <div className="product-list__pos-box-photo">
+                    <img className="product-list__pos-photo" src={this.props.photo} alt={`Внешний вид ${this.props.title}`}></img>
+                </div>
                 <span className="product-list__pos-price">{`${this.props.sum} BYN`}</span>
                 <span className="product-list__pos-lot">{`Остаток на складе: ${this.props.lot} шт.`}</span>
                 <span className="product-list__pos-subtitle">Характеристики:</span>
