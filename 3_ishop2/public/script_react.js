@@ -30683,7 +30683,11 @@ var ProductPos = function (_React$Component) {
                     { className: "product-list__pos-title" },
                     this.props.title
                 ),
-                _react2.default.createElement("img", { className: "product-list__pos-photo", src: this.props.photo, alt: "\u0412\u043D\u0435\u0448\u043D\u0438\u0439 \u0432\u0438\u0434 " + this.props.title }),
+                _react2.default.createElement(
+                    "div",
+                    { className: "product-list__pos-box-photo" },
+                    _react2.default.createElement("img", { className: "product-list__pos-photo", src: this.props.photo, alt: "\u0412\u043D\u0435\u0448\u043D\u0438\u0439 \u0432\u0438\u0434 " + this.props.title })
+                ),
                 _react2.default.createElement(
                     "span",
                     { className: "product-list__pos-price" },
