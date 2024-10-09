@@ -30526,17 +30526,51 @@ var Shop = function (_React$Component) {
     _inherits(Shop, _React$Component);
 
     function Shop() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Shop);
 
-        return _possibleConstructorReturn(this, (Shop.__proto__ || Object.getPrototypeOf(Shop)).apply(this, arguments));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Shop.__proto__ || Object.getPrototypeOf(Shop)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+            db: _this.props.db,
+            selectPos: null
+        }, _this.updateSelectPos = function (code) {
+            console.log("Выбрана позиция: " + code);
+            _this.setState({ selectPos: code });
+        }, _this.deletePos = function (code) {
+            if (confirm("\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0439 \u044D\u043B\u0435\u043C\u0435\u043D\u0442 (\u043F\u043E\u0437\u0438\u0446\u0438\u044F: " + code + ")?")) {
+                console.log("\u041F\u043E\u0437\u0438\u0446\u0438\u044F " + code + " \u0443\u0434\u0430\u043B\u0435\u043D\u0430!");
+                var newDB = _this.state.db.filter(function (elem) {
+                    return elem.code !== code;
+                });
+                _this.setState({ db: newDB });
+            }
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(Shop, [{
         key: "render",
         value: function render() {
+            var _this2 = this;
+
             var titleList = "Список товаров:";
-            var productList = this.props.db.map(function (p) {
-                return _react2.default.createElement(_ProductPos2.default, { key: p.code, title: p.title, photo: p.photo, sum: p.sum, text: p.text, lot: p.lot });
+            var productList = this.state.db.map(function (p) {
+                return _react2.default.createElement(_ProductPos2.default, { key: p.code,
+                    code: p.code,
+                    title: p.title,
+                    photo: p.photo,
+                    sum: p.sum,
+                    text: p.text,
+                    lot: p.lot,
+                    selectPos: _this2.state.selectPos,
+                    cbEnterPos: _this2.updateSelectPos,
+                    cbDeletePos: _this2.deletePos
+                });
             });
 
             return _react2.default.createElement(
@@ -30620,9 +30654,22 @@ var ProductPos = function (_React$Component) {
     _inherits(ProductPos, _React$Component);
 
     function ProductPos() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, ProductPos);
 
-        return _possibleConstructorReturn(this, (ProductPos.__proto__ || Object.getPrototypeOf(ProductPos)).apply(this, arguments));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ProductPos.__proto__ || Object.getPrototypeOf(ProductPos)).call.apply(_ref, [this].concat(args))), _this), _this.enterPos = function (eo) {
+            _this.props.cbEnterPos(_this.props.code);
+        }, _this.enterDeletePos = function (eo) {
+            eo.stopPropagation();
+            _this.props.cbDeletePos(_this.props.code);
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(ProductPos, [{
@@ -30630,7 +30677,7 @@ var ProductPos = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 "li",
-                { className: "product-list__pos", key: this.props.code },
+                { className: "product-list__pos " + (this.props.selectPos === this.props.code && "product-list__pos_select"), onClick: this.enterPos },
                 _react2.default.createElement(
                     "span",
                     { className: "product-list__pos-title" },
@@ -30656,6 +30703,11 @@ var ProductPos = function (_React$Component) {
                     "span",
                     { className: "product-list__pos-text" },
                     this.props.text
+                ),
+                _react2.default.createElement(
+                    "label",
+                    { htmlFor: "btn-del", className: "product-list__pos-box-btn" },
+                    _react2.default.createElement("input", { type: "button", id: "btn-del", className: "product-list__pos-btn-del", value: "\u0423\u0434\u0430\u043B\u0438\u0442\u044C", onClick: this.enterDeletePos })
                 )
             );
         }

@@ -54,7 +54,12 @@ body {
     max-width: 300px;
     margin: 10px;
     list-style: none;
-}.product-list__pos-title {
+    justify-content: flex-start;
+}
+.product-list__pos_select {
+    background-color: red;
+}
+.product-list__pos-title {
     padding: 10px 0;
     font-weight: bold;
     height: 45px;
@@ -81,5 +86,12 @@ body {
 .product-list__pos-text {
     font-style: italic;
     text-align: justify;
-} 
+}
+.product-list__pos-box-btn {
+    margin-top: auto;
+    padding-top: 10px;
+}
+/* .product-list__pos-btn-del {
+
+} */
 /*# sourceMappingURL=style_react.css.map*/
