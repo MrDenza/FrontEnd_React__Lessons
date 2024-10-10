@@ -10,10 +10,10 @@ class Filter extends React.Component {
         statusSort: false,
         searchWord: "",
     };
-
+    // --------------------------------------------------
     setSorting = (eo) => {
         this.setState({statusSort: eo.target.checked}, () => {
-                console.log("Статус сортировки: " + this.state.statusSort);
+                //console.log("Статус сортировки: " + this.state.statusSort);
                 this.state.statusSort ? this.sortingWordsTrue() : this.sortingWordsFalse();
             }
         )
@@ -21,22 +21,23 @@ class Filter extends React.Component {
     sortingWordsFalse = () => {
         this.setState({wordsList: this.state.noSortWordsList, noSortWordsList: []},
             console.log("Статус сортировки: отменена!")
-        ) 
+        );
     };
     sortingWordsTrue = () => {
-        this.state.statusSort && this.setState({noSortWordsList: Array.from(this.state.wordsList), wordsList: this.state.wordsList.sort()});
-        console.log("Статус сортировки: выполнена!");
+        this.state.statusSort && this.setState({noSortWordsList: Array.from(this.state.wordsList), wordsList: this.state.wordsList.sort()}, 
+            console.log("Статус сортировки: выполнена!")
+        ); 
     };
     searchElem = (eo) => {
         console.log("Поиск: " + eo.target.value);
         this.setState({searchWord: eo.target.value}, this.filterByElem)
     };
     filterByElem = () => {
-        let newUseList = this.state.wordsList.filter( (word) => {
+        let newUseList = this.props.words.filter( (word) => {
 			return word.includes(this.state.searchWord);
 		    }
         );
-		this.setState({wordsList: newUseList}, this.filterList); //!Функция фильтра
+		this.setState({wordsList: newUseList}, this.sortingWordsTrue); //!Функция фильтра
     }
     resetFilter = () => {
         console.log("Сброс фильтра!");
@@ -44,33 +45,34 @@ class Filter extends React.Component {
             wordsList: Array.from(this.props.words),
             noSortWordsList: [],
             statusSort: false,
-            searchWord: ""
+            searchWord: "",
         })
     };
+    // --------------------------------------------------
     render() {
         let newWordsList = this.state.wordsList.map( (word, index) => {
                 return (
-                    <li key={index}>{word}</li>
+                    <li key={index} className="filter__list-pos">{word}</li>
                 );
             }
         );
 
         return (
             <Fragment>
-                <div className="filter_control">
+                <div className="filter__control">
                     <label htmlFor="filter-check">
-                        <input type="checkbox" className="filter_control-check" id="filter-check" onChange={this.setSorting} checked={this.state.statusSort}></input>
+                        <input type="checkbox" className="filter__control-check" id="filter-check" onChange={this.setSorting} checked={this.state.statusSort}></input>
                     </label>
 
                     <label htmlFor="filter-text">
-                        <input type="text" className="filter_control-text" id="filter-text" defaultValue={this.state.searchWord}onChange={this.searchElem}></input>
+                        <input type="text" className="filter__control-text" id="filter-text" value={this.state.searchWord} onChange={this.searchElem}></input>
                     </label>
 
                     <label htmlFor="filter-btn">
-                        <input type="button" className="filter_control-btn" id="filter-btn" value="Сброс" onClick={this.resetFilter}></input>
+                        <input type="button" className="filter__control-btn" id="filter-btn" value="Сброс" onClick={this.resetFilter}></input>
                     </label>
                 </div>
-                <ul className="filter_list-box">
+                <ul className="filter__list-box">
                     {newWordsList}
                 </ul>
             </Fragment>
