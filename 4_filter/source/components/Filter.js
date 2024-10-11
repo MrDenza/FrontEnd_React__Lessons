@@ -19,12 +19,12 @@ class Filter extends React.Component {
         )
     };
     sortingWordsFalse = () => {
-        this.setState({wordsList: this.state.noSortWordsList, noSortWordsList: []},
+        this.setState({wordsList: Array.from(this.state.noSortWordsList), noSortWordsList: []},
             console.log("Статус сортировки: отменена!")
         );
     };
     sortingWordsTrue = () => {
-        this.state.statusSort && this.setState({noSortWordsList: Array.from(this.state.wordsList), wordsList: this.state.wordsList.sort()}, 
+        this.state.statusSort && this.setState({noSortWordsList: Array.from(this.state.wordsList), wordsList: Array.from(this.state.wordsList).sort()}, 
             console.log("Статус сортировки: выполнена!")
         ); 
     };
@@ -37,7 +37,7 @@ class Filter extends React.Component {
 			return word.includes(this.state.searchWord);
 		    }
         );
-		this.setState({wordsList: newUseList}, this.sortingWordsTrue); //!Функция фильтра
+		this.setState({wordsList: newUseList}, this.sortingWordsTrue);
     }
     resetFilter = () => {
         console.log("Сброс фильтра!");
