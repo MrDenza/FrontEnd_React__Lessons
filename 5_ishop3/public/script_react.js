@@ -409,7 +409,7 @@ var _Shop2 = _interopRequireDefault(_Shop);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//window.myEvents = new EventEmitter();
+window.myEvents = new _events.EventEmitter();
 var titleShop = "Интернет-магазин \"НотеБук\"";
 var addressShop = "Беларусь, г. Минск, просп. Победителей, д. 9";
 
