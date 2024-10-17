@@ -1,0 +1,109 @@
+body {
+    width: 100vw;
+    max-width: 100%;
+    height: 100vh;
+    position: relative;
+    background-color: orange;    
+}
+.body__container{
+    max-width: 1900px;
+    margin: 0 auto;
+    padding: 0 30px;
+    position: relative;
+}.title-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 0 15px 0;
+    text-align: center;
+}
+.title-box__text {
+    padding: 15px;
+    background-color: white;
+    border-radius: 20px;
+    color: red;
+    margin-bottom: 0;
+}
+.title-box__address {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 0 0 20px 20px;
+}
+.product-list__title {
+    text-align: center;
+}
+.product-list__box {
+    margin: 0;
+    padding: 0;
+	display: flex;
+	flex-direction: row;
+    flex-wrap: wrap;
+	align-items: stretch;
+	justify-content: center;
+}
+.product-list__pos {
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px;
+    list-style: none;
+    justify-content: flex-start;
+}
+.product-list__pos_select {
+    background-color: rgb(250, 210, 137);
+}
+.product-list__pos-title {
+    padding: 10px 0;
+    font-weight: bold;
+    height: 45px;
+    text-align: center;
+}
+.product-list__pos-box-photo {
+    padding: 5px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    background-color: white;
+}
+.product-list__pos-photo {
+    width: 200px;
+	height: 130px;
+}
+.product-list__pos-price {
+    padding: 15px 0 5px 0;
+    color: red;
+    font-weight: bolder;
+}
+.product-list__pos-lot {
+    color: blue;
+    padding: 10px 0;
+}
+.product-list__pos-subtitle {
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 10px 0;
+}
+.product-list__pos-text {
+    font-style: italic;
+    text-align: justify;
+}
+.product-list__pos-box-btn {
+    margin-top: auto;
+    padding-top: 10px;
+}
+.product-list__pos-box-btn-del, .product-list__pos-box-btn-edit {
+    margin: 0 10px;
+}
+/* .product-list__pos-btn-del {
+
+} */
+ /* .product-list__pos-btn-edit {
+
+ } */
+/*# sourceMappingURL=style_react.css.map*/

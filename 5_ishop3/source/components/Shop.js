@@ -5,6 +5,12 @@ import ProductPos from "./ProductPos";
 
 class Shop extends React.Component {
 
+    constructor (props) {
+       super(props);
+       window.myEvents && myEvents.on('cbEnterPos', (x) => { this.updateSelectPos(x) });
+       window.myEvents && myEvents.on('cbDeletePos', (x) => { this.deletePos(x) });
+    } 
+
     state = {
         db: this.props.db,
         selectPos: null,
@@ -34,8 +40,8 @@ class Shop extends React.Component {
                         text = {p.text} 
                         lot = {p.lot} 
                         selectPos = {this.state.selectPos}
-                        cbEnterPos = {this.updateSelectPos}
-                        cbDeletePos = {this.deletePos}
+                        //cbEnterPos = {this.updateSelectPos}
+                        //cbDeletePos = {this.deletePos}
             />
         );
 

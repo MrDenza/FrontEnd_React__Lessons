@@ -1,11 +1,13 @@
 ﻿import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
+import {EventEmitter} from 'events';
 
 import "./style.css";
+import productDB from "../public/productDatabase.json";
 
+//window.myEvents = new EventEmitter();
 let titleShop = "Интернет-магазин \"НотеБук\"";
 let addressShop = "Беларусь, г. Минск, просп. Победителей, д. 9";
-import productDB from "../public/productDatabase.json";
 
 import Shop from "./components/Shop";
 

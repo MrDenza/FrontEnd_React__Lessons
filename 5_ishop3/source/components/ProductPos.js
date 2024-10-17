@@ -4,13 +4,19 @@ import "./ProductPos.css"
 
 class ProductPos extends React.Component {
 
+    // constructor (props) {
+    //    super(props);
+    // } 
+    
     enterPos = (eo) => {
-        this.props.cbEnterPos(this.props.code);
+        //this.props.cbEnterPos(this.props.code);
+        window.myEvents && myEvents.emit('cbEnterPos', this.props.code);
     }
     
     enterDeletePos = (eo) => {
         eo.stopPropagation();
-        this.props.cbDeletePos(this.props.code);
+        //this.props.cbDeletePos(this.props.code);
+        window.myEvents && myEvents.emit('cbDeletePos', this.props.code);
     }
     
     render() {
