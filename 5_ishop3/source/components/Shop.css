@@ -18,6 +18,10 @@
     padding: 10px;
     border-radius: 0 0 20px 20px;
 }
+.product-list {
+    display: grid;
+    grid-template-columns: auto auto;
+}
 .product-list__title {
     text-align: center;
 }
@@ -29,4 +33,7 @@
     flex-wrap: wrap;
 	align-items: stretch;
 	justify-content: center;
+}
+.product-list__box-right {
+    position: relative;
 }

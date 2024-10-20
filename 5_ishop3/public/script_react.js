@@ -395,21 +395,18 @@ var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _events = __webpack_require__(15);
+__webpack_require__(15);
 
-__webpack_require__(16);
-
-var _productDatabase = __webpack_require__(17);
+var _productDatabase = __webpack_require__(16);
 
 var _productDatabase2 = _interopRequireDefault(_productDatabase);
 
-var _Shop = __webpack_require__(18);
+var _Shop = __webpack_require__(17);
 
 var _Shop2 = _interopRequireDefault(_Shop);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-window.myEvents = new _events.EventEmitter();
 var titleShop = "Интернет-магазин \"НотеБук\"";
 var addressShop = "Беларусь, г. Минск, просп. Победителей, д. 9";
 
@@ -30485,324 +30482,16 @@ exports.unstable_wrap = unstable_wrap;
 /* 15 */
 /***/ (function(module, exports) {
 
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-function EventEmitter() {
-  this._events = this._events || {};
-  this._maxListeners = this._maxListeners || undefined;
-}
-module.exports = EventEmitter;
-
-// Backwards-compat with node 0.10.x
-EventEmitter.EventEmitter = EventEmitter;
-
-EventEmitter.prototype._events = undefined;
-EventEmitter.prototype._maxListeners = undefined;
-
-// By default EventEmitters will print a warning if more than 10 listeners are
-// added to it. This is a useful default which helps finding memory leaks.
-EventEmitter.defaultMaxListeners = 10;
-
-// Obviously not all Emitters should be limited to 10. This function allows
-// that to be increased. Set to zero for unlimited.
-EventEmitter.prototype.setMaxListeners = function(n) {
-  if (!isNumber(n) || n < 0 || isNaN(n))
-    throw TypeError('n must be a positive number');
-  this._maxListeners = n;
-  return this;
-};
-
-EventEmitter.prototype.emit = function(type) {
-  var er, handler, len, args, i, listeners;
-
-  if (!this._events)
-    this._events = {};
-
-  // If there is no 'error' event listener then throw.
-  if (type === 'error') {
-    if (!this._events.error ||
-        (isObject(this._events.error) && !this._events.error.length)) {
-      er = arguments[1];
-      if (er instanceof Error) {
-        throw er; // Unhandled 'error' event
-      } else {
-        // At least give some kind of context to the user
-        var err = new Error('Uncaught, unspecified "error" event. (' + er + ')');
-        err.context = er;
-        throw err;
-      }
-    }
-  }
-
-  handler = this._events[type];
-
-  if (isUndefined(handler))
-    return false;
-
-  if (isFunction(handler)) {
-    switch (arguments.length) {
-      // fast cases
-      case 1:
-        handler.call(this);
-        break;
-      case 2:
-        handler.call(this, arguments[1]);
-        break;
-      case 3:
-        handler.call(this, arguments[1], arguments[2]);
-        break;
-      // slower
-      default:
-        args = Array.prototype.slice.call(arguments, 1);
-        handler.apply(this, args);
-    }
-  } else if (isObject(handler)) {
-    args = Array.prototype.slice.call(arguments, 1);
-    listeners = handler.slice();
-    len = listeners.length;
-    for (i = 0; i < len; i++)
-      listeners[i].apply(this, args);
-  }
-
-  return true;
-};
-
-EventEmitter.prototype.addListener = function(type, listener) {
-  var m;
-
-  if (!isFunction(listener))
-    throw TypeError('listener must be a function');
-
-  if (!this._events)
-    this._events = {};
-
-  // To avoid recursion in the case that type === "newListener"! Before
-  // adding it to the listeners, first emit "newListener".
-  if (this._events.newListener)
-    this.emit('newListener', type,
-              isFunction(listener.listener) ?
-              listener.listener : listener);
-
-  if (!this._events[type])
-    // Optimize the case of one listener. Don't need the extra array object.
-    this._events[type] = listener;
-  else if (isObject(this._events[type]))
-    // If we've already got an array, just append.
-    this._events[type].push(listener);
-  else
-    // Adding the second element, need to change to array.
-    this._events[type] = [this._events[type], listener];
-
-  // Check for listener leak
-  if (isObject(this._events[type]) && !this._events[type].warned) {
-    if (!isUndefined(this._maxListeners)) {
-      m = this._maxListeners;
-    } else {
-      m = EventEmitter.defaultMaxListeners;
-    }
-
-    if (m && m > 0 && this._events[type].length > m) {
-      this._events[type].warned = true;
-      console.error('(node) warning: possible EventEmitter memory ' +
-                    'leak detected. %d listeners added. ' +
-                    'Use emitter.setMaxListeners() to increase limit.',
-                    this._events[type].length);
-      if (typeof console.trace === 'function') {
-        // not supported in IE 10
-        console.trace();
-      }
-    }
-  }
-
-  return this;
-};
-
-EventEmitter.prototype.on = EventEmitter.prototype.addListener;
-
-EventEmitter.prototype.once = function(type, listener) {
-  if (!isFunction(listener))
-    throw TypeError('listener must be a function');
-
-  var fired = false;
-
-  function g() {
-    this.removeListener(type, g);
-
-    if (!fired) {
-      fired = true;
-      listener.apply(this, arguments);
-    }
-  }
-
-  g.listener = listener;
-  this.on(type, g);
-
-  return this;
-};
-
-// emits a 'removeListener' event iff the listener was removed
-EventEmitter.prototype.removeListener = function(type, listener) {
-  var list, position, length, i;
-
-  if (!isFunction(listener))
-    throw TypeError('listener must be a function');
-
-  if (!this._events || !this._events[type])
-    return this;
-
-  list = this._events[type];
-  length = list.length;
-  position = -1;
-
-  if (list === listener ||
-      (isFunction(list.listener) && list.listener === listener)) {
-    delete this._events[type];
-    if (this._events.removeListener)
-      this.emit('removeListener', type, listener);
-
-  } else if (isObject(list)) {
-    for (i = length; i-- > 0;) {
-      if (list[i] === listener ||
-          (list[i].listener && list[i].listener === listener)) {
-        position = i;
-        break;
-      }
-    }
-
-    if (position < 0)
-      return this;
-
-    if (list.length === 1) {
-      list.length = 0;
-      delete this._events[type];
-    } else {
-      list.splice(position, 1);
-    }
-
-    if (this._events.removeListener)
-      this.emit('removeListener', type, listener);
-  }
-
-  return this;
-};
-
-EventEmitter.prototype.removeAllListeners = function(type) {
-  var key, listeners;
-
-  if (!this._events)
-    return this;
-
-  // not listening for removeListener, no need to emit
-  if (!this._events.removeListener) {
-    if (arguments.length === 0)
-      this._events = {};
-    else if (this._events[type])
-      delete this._events[type];
-    return this;
-  }
-
-  // emit removeListener for all listeners on all events
-  if (arguments.length === 0) {
-    for (key in this._events) {
-      if (key === 'removeListener') continue;
-      this.removeAllListeners(key);
-    }
-    this.removeAllListeners('removeListener');
-    this._events = {};
-    return this;
-  }
-
-  listeners = this._events[type];
-
-  if (isFunction(listeners)) {
-    this.removeListener(type, listeners);
-  } else if (listeners) {
-    // LIFO order
-    while (listeners.length)
-      this.removeListener(type, listeners[listeners.length - 1]);
-  }
-  delete this._events[type];
-
-  return this;
-};
-
-EventEmitter.prototype.listeners = function(type) {
-  var ret;
-  if (!this._events || !this._events[type])
-    ret = [];
-  else if (isFunction(this._events[type]))
-    ret = [this._events[type]];
-  else
-    ret = this._events[type].slice();
-  return ret;
-};
-
-EventEmitter.prototype.listenerCount = function(type) {
-  if (this._events) {
-    var evlistener = this._events[type];
-
-    if (isFunction(evlistener))
-      return 1;
-    else if (evlistener)
-      return evlistener.length;
-  }
-  return 0;
-};
-
-EventEmitter.listenerCount = function(emitter, type) {
-  return emitter.listenerCount(type);
-};
-
-function isFunction(arg) {
-  return typeof arg === 'function';
-}
-
-function isNumber(arg) {
-  return typeof arg === 'number';
-}
-
-function isObject(arg) {
-  return typeof arg === 'object' && arg !== null;
-}
-
-function isUndefined(arg) {
-  return arg === void 0;
-}
-
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 16 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports) {
-
 module.exports = [{"code":101,"title":"ASUS ROG Zephyrus M16 GU603ZW","photo":"img/1.jpeg","sum":9750,"text":"16.0\" 2560 x 1600, IPS, 165 Гц, Intel Core i9 12900H, 16 ГБ DDR5, SSD 1024 ГБ, видеокарта NVIDIA GeForce RTX 3070 Ti 8 ГБ, Windows 11 Pro, цвет крышки черный","lot":102},{"code":102,"title":"ASUS ZenBook Pro Duo UX8402ZE","photo":"img/2.jpeg","sum":9440,"text":"14.5\" 2880 x 1800, OLED, 120 Гц, сенсорный, Intel Core i9 12900H, 32 ГБ LPDDR5, SSD 1024 ГБ, видеокарта NVIDIA GeForce RTX 3050 Ti 4 ГБ, Windows 10 Pro, цвет крышки черный","lot":202},{"code":103,"title":"ASUS ROG Strix SCAR 17 G733ZX","photo":"img/3.jpeg","sum":12480,"text":"17.3\" 2560 x 1440, IPS, 240 Гц, Intel Core i9 12900H, 32 ГБ DDR5, SSD 2048 ГБ, видеокарта NVIDIA GeForce RTX 3080 Ti 16 ГБ, без ОС, цвет крышки черный","lot":302},{"code":104,"title":"ASUS ROG Strix SCAR 15 G533ZS","photo":"img/3.jpeg","sum":8200,"text":"15.6\" 2560 x 1440, IPS, 240 Гц, Intel Core i9 12900H, 32 ГБ DDR5, SSD 1024 ГБ, видеокарта NVIDIA GeForce RTX 3080 8 ГБ, Windows 11 Pro, цвет крышки черный","lot":402},{"code":105,"title":"ASUS ROG Strix SCAR 17 G733CW","photo":"img/4.jpeg","sum":9667,"text":"17.3\" 2560 x 1440, IPS, 240 Гц, Intel Core i9 12950HX, 16 ГБ DDR5, SSD 2048 ГБ, видеокарта NVIDIA GeForce RTX 3070 Ti 8 ГБ, Windows 11, цвет крышки черный","lot":502},{"code":106,"title":"ASUS ROG Flow Z13 GZ301ZE","photo":"img/5.jpeg","sum":7294,"text":"13.4\" 1920 x 1200, IPS, 120 Гц, Intel Core i9 12900H, 16 ГБ LPDDR5, SSD 1024 ГБ, видеокарта NVIDIA GeForce RTX 3050 Ti 4 ГБ, Windows 11, цвет крышки черный","lot":602},{"code":107,"title":"ASUS ROG Strix SCAR 17 SE G733CX","photo":"img/6.jpeg","sum":9682,"text":"17.3\" 2560 x 1440, IPS, 240 Гц, Intel Core i9 12950HX, 32 ГБ DDR5, SSD 4096 ГБ, видеокарта NVIDIA GeForce RTX 3080 Ti 16 ГБ, Windows 11, цвет крышки черный","lot":702},{"code":108,"title":"ASUS Zenbook Pro 16X UX7602ZM","photo":"img/7.jpeg","sum":13589,"text":"16.0\" 3840 x 2400, OLED, 60 Гц, сенсорный, Intel Core i9 12900H, 32 ГБ LPDDR5, SSD 1024 ГБ, видеокарта NVIDIA GeForce RTX 3060 6 ГБ, Windows 11 Pro, цвет крышки черный","lot":802},{"code":109,"title":"ASUS TUF Gaming F17 FX707ZM","photo":"img/8.jpeg","sum":5350,"text":"17.3\" 1920 x 1080, IPS, 144 Гц, Intel Core i7 12700H, 16 ГБ DDR5, SSD 1024 ГБ, видеокарта NVIDIA GeForce RTX 3060 6 ГБ, без ОС, цвет крышки серый","lot":902},{"code":110,"title":"ASUS TUF Gaming Dash F15 2022 FX517ZR","photo":"img/9.jpeg","sum":5040,"text":"15.6\" 1920 x 1080, IPS, 144 Гц, Intel Core i7 12650H, 16 ГБ DDR5, SSD 512 ГБ, видеокарта NVIDIA GeForce RTX 3070 8 ГБ, Windows 11, цвет крышки черный","lot":1002}]
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30818,11 +30507,15 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(19);
+__webpack_require__(18);
 
-var _ProductPos = __webpack_require__(20);
+var _ProductPos = __webpack_require__(19);
 
 var _ProductPos2 = _interopRequireDefault(_ProductPos);
+
+var _ProductInfo = __webpack_require__(21);
+
+var _ProductInfo2 = _interopRequireDefault(_ProductInfo);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30835,42 +30528,46 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Shop = function (_React$Component) {
     _inherits(Shop, _React$Component);
 
-    function Shop(props) {
+    function Shop() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Shop);
 
-        var _this = _possibleConstructorReturn(this, (Shop.__proto__ || Object.getPrototypeOf(Shop)).call(this, props));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.state = {
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Shop.__proto__ || Object.getPrototypeOf(Shop)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
             db: _this.props.db,
-            selectPos: null
-        };
-
-        _this.updateSelectPos = function (code) {
+            selectPos: null,
+            selectPosInfo: null,
+            mode: 0
+        }, _this.updateSelectPos = function (code) {
             console.log("Выбрана позиция: " + code);
-            _this.setState({ selectPos: code });
-        };
-
-        _this.deletePos = function (code) {
+            _this.setState({ selectPos: code, selectPosInfo: _this.findInfoPos(code), mode: 3 });
+        }, _this.findInfoPos = function (code) {
+            return _this.state.db.find(function (pos, i) {
+                return pos.code === code;
+            });
+        }, _this.deletePos = function (code) {
             if (confirm("\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0439 \u044D\u043B\u0435\u043C\u0435\u043D\u0442 (\u043F\u043E\u0437\u0438\u0446\u0438\u044F: " + code + ")?")) {
                 console.log("\u041F\u043E\u0437\u0438\u0446\u0438\u044F " + code + " \u0443\u0434\u0430\u043B\u0435\u043D\u0430!");
                 var newDB = _this.state.db.filter(function (elem) {
                     return elem.code !== code;
                 });
-                _this.setState({ db: newDB });
+                _this.state.selectPos === code ? _this.setState({ db: newDB, selectPos: null, selectPosInfo: null, mode: 0 }) : _this.setState({ db: newDB });
             }
-        };
-
-        window.myEvents && myEvents.on('cbEnterPos', function (x) {
-            _this.updateSelectPos(x);
-        });
-        window.myEvents && myEvents.on('cbDeletePos', function (x) {
-            _this.deletePos(x);
-        });
-        return _this;
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(Shop, [{
         key: "render",
+
+
+        //componentDidMount() { this.updateSelectPos(101) }
+
         value: function render() {
             var _this2 = this;
 
@@ -30883,9 +30580,9 @@ var Shop = function (_React$Component) {
                     sum: p.sum,
                     text: p.text,
                     lot: p.lot,
-                    selectPos: _this2.state.selectPos
-                    //cbEnterPos = {this.updateSelectPos}
-                    //cbDeletePos = {this.deletePos}
+                    selectPos: _this2.state.selectPos,
+                    cbEnterPos: _this2.updateSelectPos,
+                    cbDeletePos: _this2.deletePos
                 });
             });
 
@@ -30913,14 +30610,30 @@ var Shop = function (_React$Component) {
                         "article",
                         { className: "product-list" },
                         _react2.default.createElement(
-                            "h2",
-                            { className: "product-list__title" },
-                            titleList
+                            "div",
+                            { className: "product-list__box-left" },
+                            _react2.default.createElement(
+                                "h2",
+                                { className: "product-list__title" },
+                                titleList
+                            ),
+                            _react2.default.createElement(
+                                "ul",
+                                { className: "product-list__box" },
+                                productList
+                            )
                         ),
                         _react2.default.createElement(
-                            "ul",
-                            { className: "product-list__box" },
-                            productList
+                            "div",
+                            { className: "product-list__box-right" },
+                            this.state.mode === 3 && _react2.default.createElement(_ProductInfo2.default, { code: this.state.selectPosInfo.code,
+                                title: this.state.selectPosInfo.title,
+                                photo: this.state.selectPosInfo.photo,
+                                sum: this.state.selectPosInfo.sum,
+                                text: this.state.selectPosInfo.text,
+                                lot: this.state.selectPosInfo.lot,
+                                cbDeletePos: this.deletePos
+                            })
                         )
                     )
                 )
@@ -30934,13 +30647,13 @@ var Shop = function (_React$Component) {
 exports.default = Shop;
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30956,7 +30669,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(21);
+__webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30981,18 +30694,12 @@ var ProductPos = function (_React$Component) {
         }
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ProductPos.__proto__ || Object.getPrototypeOf(ProductPos)).call.apply(_ref, [this].concat(args))), _this), _this.enterPos = function (eo) {
-            //this.props.cbEnterPos(this.props.code);
-            window.myEvents && myEvents.emit('cbEnterPos', _this.props.code);
+            _this.props.cbEnterPos(_this.props.code);
         }, _this.enterDeletePos = function (eo) {
             eo.stopPropagation();
-            //this.props.cbDeletePos(this.props.code);
-            window.myEvents && myEvents.emit('cbDeletePos', _this.props.code);
+            _this.props.cbDeletePos(_this.props.code);
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    // constructor (props) {
-    //    super(props);
-    // } 
 
     _createClass(ProductPos, [{
         key: "render",
@@ -31054,7 +30761,147 @@ var ProductPos = function (_React$Component) {
 exports.default = ProductPos;
 
 /***/ }),
+/* 20 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(22);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ProductInfo = function (_React$Component) {
+    _inherits(ProductInfo, _React$Component);
+
+    function ProductInfo() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        _classCallCheck(this, ProductInfo);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ProductInfo.__proto__ || Object.getPrototypeOf(ProductInfo)).call.apply(_ref, [this].concat(args))), _this), _this.enterDeletePos = function (eo) {
+            eo.stopPropagation();
+            _this.props.cbDeletePos(_this.props.code);
+        }, _temp), _possibleConstructorReturn(_this, _ret);
+    }
+
+    _createClass(ProductInfo, [{
+        key: "render",
+        value: function render() {
+
+            return _react2.default.createElement(
+                "div",
+                { className: "product-info" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "product-info__container" },
+                    _react2.default.createElement(
+                        "h2",
+                        { className: "product-info__big-title" },
+                        "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043E \u0442\u043E\u0432\u0430\u0440\u0435:"
+                    ),
+                    _react2.default.createElement(
+                        "span",
+                        { className: "product-info__title" },
+                        _react2.default.createElement(
+                            "b",
+                            null,
+                            "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435:"
+                        ),
+                        " ",
+                        this.props.title
+                    ),
+                    _react2.default.createElement(
+                        "b",
+                        null,
+                        "\u0412\u043D\u0435\u0448\u043D\u0438\u0439 \u0432\u0438\u0434:"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "product-info__box-photo" },
+                        _react2.default.createElement("img", { className: "product-info__photo", src: this.props.photo, alt: "\u0412\u043D\u0435\u0448\u043D\u0438\u0439 \u0432\u0438\u0434 " + this.props.title })
+                    ),
+                    _react2.default.createElement(
+                        "span",
+                        { className: "product-info__price" },
+                        _react2.default.createElement(
+                            "b",
+                            null,
+                            "\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C: "
+                        ),
+                        this.props.sum + " BYN"
+                    ),
+                    _react2.default.createElement(
+                        "span",
+                        { className: "product-info__lot" },
+                        _react2.default.createElement(
+                            "b",
+                            null,
+                            "\u041E\u0441\u0442\u0430\u0442\u043E\u043A \u043D\u0430 \u0441\u043A\u043B\u0430\u0434\u0435:"
+                        ),
+                        " ",
+                        this.props.lot + " \u0448\u0442."
+                    ),
+                    _react2.default.createElement(
+                        "span",
+                        { className: "product-info__text" },
+                        _react2.default.createElement(
+                            "b",
+                            null,
+                            "\u0425\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0438:"
+                        ),
+                        " ",
+                        this.props.text
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "product-info__pos-box-btn" },
+                        _react2.default.createElement(
+                            "label",
+                            { htmlFor: "dop-btn-del", className: "product-info__pos-box-btn-del" },
+                            _react2.default.createElement("input", { type: "button", id: "dop-btn-del", className: "product-info__pos-btn-del", value: "\u0423\u0434\u0430\u043B\u0438\u0442\u044C", onClick: this.enterDeletePos })
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return ProductInfo;
+}(_react2.default.Component);
+
+exports.default = ProductInfo;
+
+/***/ }),
+/* 22 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

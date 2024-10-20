@@ -2,32 +2,37 @@
 
 import "./Shop.css";
 import ProductPos from "./ProductPos";
+import ProductInfo from "./ProductInfo";
 
 class Shop extends React.Component {
-
-    constructor (props) {
-       super(props);
-       window.myEvents && myEvents.on('cbEnterPos', (x) => { this.updateSelectPos(x) });
-       window.myEvents && myEvents.on('cbDeletePos', (x) => { this.deletePos(x) });
-    } 
 
     state = {
         db: this.props.db,
         selectPos: null,
+        selectPosInfo: null,
+        mode: 0,
     };
 
     updateSelectPos = (code) => {
         console.log("Выбрана позиция: " + code);
-        this.setState({selectPos: code});
+        this.setState({selectPos: code, selectPosInfo: this.findInfoPos(code), mode: 3});
     }
     
+    findInfoPos = (code) => {
+        return this.state.db.find( (pos, i) => { return pos.code === code } );
+    }
+
     deletePos = (code) => {
         if (confirm(`Удалить выбранный элемент (позиция: ${code})?`)) {
             console.log(`Позиция ${code} удалена!`);   
-            let newDB = this.state.db.filter((elem) => elem.code !== code)
-            this.setState({db: newDB});
+            let newDB = this.state.db.filter((elem) => elem.code !== code);
+            (this.state.selectPos === code) 
+                ? this.setState({db: newDB, selectPos: null, selectPosInfo: null, mode: 0}) 
+                : this.setState({db: newDB});
         }
     }
+
+   //componentDidMount() { this.updateSelectPos(101) }
 
     render() {
         const titleList = "Список товаров:";
@@ -40,11 +45,11 @@ class Shop extends React.Component {
                         text = {p.text} 
                         lot = {p.lot} 
                         selectPos = {this.state.selectPos}
-                        //cbEnterPos = {this.updateSelectPos}
-                        //cbDeletePos = {this.deletePos}
+                        cbEnterPos = {this.updateSelectPos}
+                        cbDeletePos = {this.deletePos}
             />
         );
-
+        
         return (
             <Fragment>
                 <header className="title-box">
@@ -57,10 +62,25 @@ class Shop extends React.Component {
                 </header>
                 <main>
                     <article className="product-list">
-                        <h2 className="product-list__title">{titleList}</h2>
-                        <ul className="product-list__box">
-                            {productList}
-                        </ul>
+                        <div className="product-list__box-left">
+                            <h2 className="product-list__title">{titleList}</h2>
+                            <ul className="product-list__box">
+                                {productList}
+                            </ul>
+                        </div>
+                        <div className="product-list__box-right">
+                            {
+                                (this.state.mode === 3) && <ProductInfo code = {this.state.selectPosInfo.code} 
+                                                                        title = {this.state.selectPosInfo.title} 
+                                                                        photo = {this.state.selectPosInfo.photo} 
+                                                                        sum = {this.state.selectPosInfo.sum} 
+                                                                        text = {this.state.selectPosInfo.text} 
+                                                                        lot = {this.state.selectPosInfo.lot}
+                                                                        cbDeletePos = {this.deletePos}
+                                                                         />
+                                
+                            }
+                        </div>
                     </article>
                 </main>
             </Fragment>
