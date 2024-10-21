@@ -5,17 +5,12 @@ function withRainbowFrame(colors) {
         (Comp) => {
             class UpdateComp extends React.Component {
                 render() {
-                    let RainbowElem = colors.reduce( (acc, c, i) => {
-                        return (
-                            <div key={i} style={{border: `5px solid ${c}`, padding: "10px"}}>{acc}</div>
-                        );   
+
+                    let RainbowElem = colors.reduce( (acc, c) => {
+                        return <div style={{border: `5px solid ${c}`, padding: "10px"}}>{acc}</div>    
                     }, <Comp {...this.props}/>);
 
-                    return (
-                        <div>
-                            {RainbowElem}
-                        </div>
-                    );
+                    return <div> {RainbowElem} </div>
                 }
             }
         return UpdateComp;
@@ -23,16 +18,11 @@ function withRainbowFrame(colors) {
     );   
 }
 
-// let withColorBorder = (colors) => (Comp) => (props) => 
-//     <div>
-//     {
+// let withRainbowFrame = (colors) => (Comp) => (props) => 
+//     <div> {
 //         colors.reduce( (acc, c, i) => {
-//             return (
-//                 <div key={i} style={{border: `5px solid ${c}`, padding: "10px"}}>{acc}</div>
-//             );   
+//             return <div key={i} style={{border: `5px solid ${c}`, padding: "10px"}}>{acc}</div>   
 //         }, <Comp {...props}/>)
-//     }
-//     </div>
-// ;
+//     } </div>;
 
 export { withRainbowFrame };
