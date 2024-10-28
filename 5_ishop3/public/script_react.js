@@ -65,6 +65,21 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(5);
+} else {
+  module.exports = __webpack_require__(6);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -254,21 +269,6 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(5);
-} else {
-  module.exports = __webpack_require__(6);
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -378,7 +378,7 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = __webpack_require__(10);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 4 */
@@ -387,7 +387,7 @@ if (process.env.NODE_ENV === 'production') {
 "use strict";
 
 
-var _react = __webpack_require__(1);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -2789,7 +2789,7 @@ exports.version = ReactVersion;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 7 */
@@ -2835,7 +2835,7 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = __webpack_require__(11);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 8 */
@@ -2853,7 +2853,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(1),m=__webpack_require__(2),r=__webpack_require__(3);function y(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(y(227));var ba=new Set,ca={};function da(a,b){ea(a,b);ea(a+"Capture",b)}
+var aa=__webpack_require__(0),m=__webpack_require__(2),r=__webpack_require__(3);function y(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(y(227));var ba=new Set,ca={};function da(a,b){ea(a,b);ea(a+"Capture",b)}
 function ea(a,b){ca[a]=b;for(a=0;a<b.length;a++)ba.add(b[a])}
 var fa=!("undefined"===typeof window||"undefined"===typeof window.document||"undefined"===typeof window.document.createElement),ha=/^[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD][:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\-.0-9\u00B7\u0300-\u036F\u203F-\u2040]*$/,ia=Object.prototype.hasOwnProperty,
 ja={},ka={};function la(a){if(ia.call(ka,a))return!0;if(ia.call(ja,a))return!1;if(ha.test(a))return ka[a]=!0;ja[a]=!0;return!1}function ma(a,b,c,d){if(null!==c&&0===c.type)return!1;switch(typeof b){case "function":case "symbol":return!0;case "boolean":if(d)return!1;if(null!==c)return!c.acceptsBooleans;a=a.toLowerCase().slice(0,5);return"data-"!==a&&"aria-"!==a;default:return!1}}
@@ -3820,7 +3820,7 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 11 */
@@ -3842,7 +3842,7 @@ if (process.env.NODE_ENV !== "production") {
   (function() {
 'use strict';
 
-var React = __webpack_require__(1);
+var React = __webpack_require__(0);
 var _assign = __webpack_require__(2);
 var Scheduler = __webpack_require__(3);
 var tracing = __webpack_require__(12);
@@ -30090,7 +30090,7 @@ exports.version = ReactVersion;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 12 */
@@ -30105,7 +30105,7 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = __webpack_require__(14);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 13 */
@@ -30476,7 +30476,7 @@ exports.unstable_wrap = unstable_wrap;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 15 */
@@ -30503,7 +30503,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(1);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -30513,9 +30513,9 @@ var _ProductPos = __webpack_require__(19);
 
 var _ProductPos2 = _interopRequireDefault(_ProductPos);
 
-var _ProductInfo = __webpack_require__(21);
+var _RightBox = __webpack_require__(21);
 
-var _ProductInfo2 = _interopRequireDefault(_ProductInfo);
+var _RightBox2 = _interopRequireDefault(_RightBox);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30540,34 +30540,66 @@ var Shop = function (_React$Component) {
         }
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Shop.__proto__ || Object.getPrototypeOf(Shop)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-            db: _this.props.db,
-            selectPos: null,
-            selectPosInfo: null,
-            mode: 0
+            db: _this.props.db, // массив объектов - база данных
+            selectPos: null, // выделенная позиция
+            selectPosInfo: null, // объект информации выделенной позиции
+            mode: 0, // 0 - ничего, 1 - создание, 2 - редактирование, 3 - отображение
+            keyStatus: false // отключать кнопки когда изменяется информация
         }, _this.updateSelectPos = function (code) {
             console.log("Выбрана позиция: " + code);
-            _this.setState({ selectPos: code, selectPosInfo: _this.findInfoPos(code), mode: 3 });
+            _this.setState({ selectPos: code, selectPosInfo: _this.findInfoPos(code), mode: 3, keyStatus: false });
         }, _this.findInfoPos = function (code) {
             return _this.state.db.find(function (pos, i) {
                 return pos.code === code;
             });
+        }, _this.getListCode = function () {
+            return _this.state.db.reduce(function (codeList, elem) {
+                codeList.push(elem.code);
+                return codeList;
+            }, []);
         }, _this.deletePos = function (code) {
             if (confirm("\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0439 \u044D\u043B\u0435\u043C\u0435\u043D\u0442 (\u043F\u043E\u0437\u0438\u0446\u0438\u044F: " + code + ")?")) {
                 console.log("\u041F\u043E\u0437\u0438\u0446\u0438\u044F " + code + " \u0443\u0434\u0430\u043B\u0435\u043D\u0430!");
                 var newDB = _this.state.db.filter(function (elem) {
                     return elem.code !== code;
                 });
-                _this.state.selectPos === code ? _this.setState({ db: newDB, selectPos: null, selectPosInfo: null, mode: 0 }) : _this.setState({ db: newDB });
+                _this.state.selectPos === code ? _this.setState({ db: newDB, selectPos: null, selectPosInfo: null, mode: 0, keyStatus: false }) : _this.setState({ db: newDB });
             }
+        }, _this.editPos = function (code) {
+            console.log("Редактирование позиции: " + code);
+            _this.setState({ selectPos: code, selectPosInfo: _this.findInfoPos(code), mode: 2 });
+        }, _this.editModeOn = function () {
+            _this.setState({ keyStatus: true });
+        }, _this.editModeOff = function (code) {
+            _this.state.mode === 2 && _this.updateSelectPos(code);
+            _this.state.mode === 1 && _this.setState({ mode: 0, keyStatus: false, selectPos: null, selectPosInfo: null });
+        }, _this.addNewPos = function (elem, oldCode) {
+            var dbCopy = JSON.parse(JSON.stringify(_this.state.db));
+            var indexPos = dbCopy.findIndex(function (pos) {
+                return pos.code == oldCode;
+            });
+            if (oldCode === elem.code) {
+                dbCopy[indexPos] = elem;
+            } else {
+                indexPos > -1 && dbCopy.splice(indexPos, 1);
+                dbCopy.push(elem);
+            }
+            _this.setState({ db: dbCopy, mode: 0, keyStatus: false, selectPos: null, selectPosInfo: null }, console.log("\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0430 \u043D\u043E\u0432\u0430\u044F \u043F\u043E\u0437\u0438\u0446\u0438\u044F! \u041A\u043E\u0434: " + elem.code));
+        }, _this.createNewPos = function () {
+            console.log("Создание новой позиции.");
+            _this.setState({ selectPos: null, selectPosInfo: null, mode: 1 });
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(Shop, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {// тест
+            //this.updateSelectPos(101);
+            //this.editPos(101);
+            //this.createNewPos(); 
+        }
+    }, {
         key: "render",
-
-
-        //componentDidMount() { this.updateSelectPos(101) }
-
         value: function render() {
             var _this2 = this;
 
@@ -30581,8 +30613,10 @@ var Shop = function (_React$Component) {
                     text: p.text,
                     lot: p.lot,
                     selectPos: _this2.state.selectPos,
+                    keyStatus: _this2.state.keyStatus,
                     cbEnterPos: _this2.updateSelectPos,
-                    cbDeletePos: _this2.deletePos
+                    cbDeletePos: _this2.deletePos,
+                    cbEditPos: _this2.editPos
                 });
             });
 
@@ -30618,23 +30652,25 @@ var Shop = function (_React$Component) {
                                 titleList
                             ),
                             _react2.default.createElement(
+                                "label",
+                                { htmlFor: "btn-add-pos", className: "product-list__btn-add-pos" },
+                                _react2.default.createElement("input", { type: "button", id: "btn-add-pos", value: "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043D\u043E\u0432\u044B\u0439 \u0442\u043E\u0432\u0430\u0440", disabled: this.state.keyStatus, onClick: this.createNewPos })
+                            ),
+                            _react2.default.createElement(
                                 "ul",
                                 { className: "product-list__box" },
                                 productList
                             )
                         ),
-                        _react2.default.createElement(
-                            "div",
-                            { className: "product-list__box-right" },
-                            this.state.mode === 3 && _react2.default.createElement(_ProductInfo2.default, { code: this.state.selectPosInfo.code,
-                                title: this.state.selectPosInfo.title,
-                                photo: this.state.selectPosInfo.photo,
-                                sum: this.state.selectPosInfo.sum,
-                                text: this.state.selectPosInfo.text,
-                                lot: this.state.selectPosInfo.lot,
-                                cbDeletePos: this.deletePos
-                            })
-                        )
+                        this.state.mode > 0 && _react2.default.createElement(_RightBox2.default, { mode: this.state.mode,
+                            objInfo: this.state.selectPosInfo,
+                            cbGetListCode: this.getListCode,
+                            cbDeletePos: this.deletePos,
+                            cbEditPos: this.editPos,
+                            cbEditModeOn: this.editModeOn,
+                            cbEditModeOff: this.editModeOff,
+                            cbAddNewPos: this.addNewPos
+                        })
                     )
                 )
             );
@@ -30665,7 +30701,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(1);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -30693,11 +30729,16 @@ var ProductPos = function (_React$Component) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ProductPos.__proto__ || Object.getPrototypeOf(ProductPos)).call.apply(_ref, [this].concat(args))), _this), _this.enterPos = function (eo) {
-            _this.props.cbEnterPos(_this.props.code);
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ProductPos.__proto__ || Object.getPrototypeOf(ProductPos)).call.apply(_ref, [this].concat(args))), _this), _this.enterPos = function () {
+            if (_this.props.keyStatus === false) {
+                _this.props.cbEnterPos(_this.props.code);
+            }
         }, _this.enterDeletePos = function (eo) {
             eo.stopPropagation();
             _this.props.cbDeletePos(_this.props.code);
+        }, _this.enterEditPos = function (eo) {
+            eo.stopPropagation();
+            _this.props.cbEditPos(_this.props.code);
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
@@ -30715,7 +30756,9 @@ var ProductPos = function (_React$Component) {
                 _react2.default.createElement(
                     "div",
                     { className: "product-list__pos-box-photo" },
-                    _react2.default.createElement("img", { className: "product-list__pos-photo", src: this.props.photo, alt: "\u0412\u043D\u0435\u0448\u043D\u0438\u0439 \u0432\u0438\u0434 " + this.props.title })
+                    _react2.default.createElement("img", { className: "product-list__pos-photo", src: this.props.photo, alt: "\u0412\u043D\u0435\u0448\u043D\u0438\u0439 \u0432\u0438\u0434 " + this.props.title, onError: function onError(e) {
+                            return e.target.src = 'img/0.jpeg';
+                        } })
                 ),
                 _react2.default.createElement(
                     "span",
@@ -30730,7 +30773,7 @@ var ProductPos = function (_React$Component) {
                 _react2.default.createElement(
                     "span",
                     { className: "product-list__pos-subtitle" },
-                    "\u0425\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0438:"
+                    "\u041F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B:"
                 ),
                 _react2.default.createElement(
                     "span",
@@ -30743,12 +30786,12 @@ var ProductPos = function (_React$Component) {
                     _react2.default.createElement(
                         "label",
                         { htmlFor: "btn-del", className: "product-list__pos-box-btn-del" },
-                        _react2.default.createElement("input", { type: "button", id: "btn-del", className: "product-list__pos-btn-del", value: "\u0423\u0434\u0430\u043B\u0438\u0442\u044C", onClick: this.enterDeletePos })
+                        _react2.default.createElement("input", { type: "button", id: "btn-del", className: "product-list__pos-btn-del", value: "\u0423\u0434\u0430\u043B\u0438\u0442\u044C", onClick: this.enterDeletePos, disabled: this.props.keyStatus })
                     ),
                     _react2.default.createElement(
                         "label",
                         { htmlFor: "btn-edit", className: "product-list__pos-box-btn-edit" },
-                        _react2.default.createElement("input", { type: "button", id: "btn-edit", className: "product-list__pos-btn-edit", value: "\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C", onClick: this.enterDeletePos })
+                        _react2.default.createElement("input", { type: "button", id: "btn-edit", className: "product-list__pos-btn-edit", value: "\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C", onClick: this.enterEditPos, disabled: this.props.keyStatus })
                     )
                 )
             );
@@ -30779,11 +30822,107 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(1);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
 __webpack_require__(22);
+
+var _ProductInfo = __webpack_require__(23);
+
+var _ProductInfo2 = _interopRequireDefault(_ProductInfo);
+
+var _NewProduct = __webpack_require__(25);
+
+var _NewProduct2 = _interopRequireDefault(_NewProduct);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var nullObj = { "code": "", "title": "", "photo": "", "sum": "", "text": "", "lot": "" };
+
+var RightBox = function (_React$Component) {
+    _inherits(RightBox, _React$Component);
+
+    function RightBox() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        _classCallCheck(this, RightBox);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = RightBox.__proto__ || Object.getPrototypeOf(RightBox)).call.apply(_ref, [this].concat(args))), _this), _this.modeRender = function (mode) {
+            if (mode === 1 || mode === 2) {
+                return _react2.default.createElement(_NewProduct2.default, { mode: _this.props.mode,
+                    objInfo: mode === 2 ? _this.props.objInfo : nullObj,
+                    cbGetListCode: _this.props.cbGetListCode // получение массива кодов товаров
+                    , cbEditModeOn: _this.props.cbEditModeOn // режим редактирования включен
+                    , cbEditModeOff: _this.props.cbEditModeOff // режим редактирования выключен
+                    , cbAddNewPos: _this.props.cbAddNewPos // добавление нового элемента в БД
+                });
+            }
+            if (mode === 3) {
+                return _react2.default.createElement(_ProductInfo2.default, { objInfo: _this.props.objInfo,
+                    cbDeletePos: _this.props.cbDeletePos // кнопка "Удалить"
+                    , cbEditPos: _this.props.cbEditPos // кнопка "Редактировать"
+                });
+            }
+        }, _temp), _possibleConstructorReturn(_this, _ret);
+    }
+
+    _createClass(RightBox, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "product-r-box" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "product-r-box__container" },
+                    this.modeRender(this.props.mode)
+                )
+            );
+        }
+    }]);
+
+    return RightBox;
+}(_react2.default.Component);
+
+exports.default = RightBox;
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(24);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30809,7 +30948,10 @@ var ProductInfo = function (_React$Component) {
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ProductInfo.__proto__ || Object.getPrototypeOf(ProductInfo)).call.apply(_ref, [this].concat(args))), _this), _this.enterDeletePos = function (eo) {
             eo.stopPropagation();
-            _this.props.cbDeletePos(_this.props.code);
+            _this.props.cbDeletePos(_this.props.objInfo.code);
+        }, _this.enterEditPos = function (eo) {
+            eo.stopPropagation();
+            _this.props.cbEditPos(_this.props.objInfo.code);
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
@@ -30818,77 +30960,80 @@ var ProductInfo = function (_React$Component) {
         value: function render() {
 
             return _react2.default.createElement(
-                "div",
-                { className: "product-info" },
+                _react.Fragment,
+                null,
                 _react2.default.createElement(
-                    "div",
-                    { className: "product-info__container" },
-                    _react2.default.createElement(
-                        "h2",
-                        { className: "product-info__big-title" },
-                        "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043E \u0442\u043E\u0432\u0430\u0440\u0435:"
-                    ),
-                    _react2.default.createElement(
-                        "span",
-                        { className: "product-info__title" },
-                        _react2.default.createElement(
-                            "b",
-                            null,
-                            "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435:"
-                        ),
-                        " ",
-                        this.props.title
-                    ),
+                    "h2",
+                    { className: "product-info__big-title" },
+                    "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043E \u0442\u043E\u0432\u0430\u0440\u0435:"
+                ),
+                _react2.default.createElement(
+                    "span",
+                    { className: "product-info__title" },
                     _react2.default.createElement(
                         "b",
                         null,
-                        "\u0412\u043D\u0435\u0448\u043D\u0438\u0439 \u0432\u0438\u0434:"
+                        "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435:"
+                    ),
+                    " ",
+                    this.props.objInfo.title
+                ),
+                _react2.default.createElement(
+                    "b",
+                    null,
+                    "\u0412\u043D\u0435\u0448\u043D\u0438\u0439 \u0432\u0438\u0434:"
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "product-info__box-photo" },
+                    _react2.default.createElement("img", { className: "product-info__photo", src: this.props.objInfo.photo, alt: "\u0412\u043D\u0435\u0448\u043D\u0438\u0439 \u0432\u0438\u0434 " + this.props.objInfo.title, onError: function onError(e) {
+                            return e.target.src = 'img/0.jpeg';
+                        } })
+                ),
+                _react2.default.createElement(
+                    "span",
+                    { className: "product-info__price" },
+                    _react2.default.createElement(
+                        "b",
+                        null,
+                        "\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C: "
+                    ),
+                    this.props.objInfo.sum + " BYN"
+                ),
+                _react2.default.createElement(
+                    "span",
+                    { className: "product-info__lot" },
+                    _react2.default.createElement(
+                        "b",
+                        null,
+                        "\u041E\u0441\u0442\u0430\u0442\u043E\u043A \u043D\u0430 \u0441\u043A\u043B\u0430\u0434\u0435:"
+                    ),
+                    " ",
+                    this.props.objInfo.lot + " \u0448\u0442."
+                ),
+                _react2.default.createElement(
+                    "span",
+                    { className: "product-info__text" },
+                    _react2.default.createElement(
+                        "b",
+                        null,
+                        "\u041F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B:"
+                    ),
+                    " ",
+                    this.props.objInfo.text
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "product-info__pos-box-btn" },
+                    _react2.default.createElement(
+                        "label",
+                        { htmlFor: "dop-btn-del", className: "product-info__pos-box-btn-del" },
+                        _react2.default.createElement("input", { type: "button", id: "dop-btn-del", className: "product-info__pos-btn-del", value: "\u0423\u0434\u0430\u043B\u0438\u0442\u044C", onClick: this.enterDeletePos })
                     ),
                     _react2.default.createElement(
-                        "div",
-                        { className: "product-info__box-photo" },
-                        _react2.default.createElement("img", { className: "product-info__photo", src: this.props.photo, alt: "\u0412\u043D\u0435\u0448\u043D\u0438\u0439 \u0432\u0438\u0434 " + this.props.title })
-                    ),
-                    _react2.default.createElement(
-                        "span",
-                        { className: "product-info__price" },
-                        _react2.default.createElement(
-                            "b",
-                            null,
-                            "\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C: "
-                        ),
-                        this.props.sum + " BYN"
-                    ),
-                    _react2.default.createElement(
-                        "span",
-                        { className: "product-info__lot" },
-                        _react2.default.createElement(
-                            "b",
-                            null,
-                            "\u041E\u0441\u0442\u0430\u0442\u043E\u043A \u043D\u0430 \u0441\u043A\u043B\u0430\u0434\u0435:"
-                        ),
-                        " ",
-                        this.props.lot + " \u0448\u0442."
-                    ),
-                    _react2.default.createElement(
-                        "span",
-                        { className: "product-info__text" },
-                        _react2.default.createElement(
-                            "b",
-                            null,
-                            "\u0425\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0438:"
-                        ),
-                        " ",
-                        this.props.text
-                    ),
-                    _react2.default.createElement(
-                        "div",
-                        { className: "product-info__pos-box-btn" },
-                        _react2.default.createElement(
-                            "label",
-                            { htmlFor: "dop-btn-del", className: "product-info__pos-box-btn-del" },
-                            _react2.default.createElement("input", { type: "button", id: "dop-btn-del", className: "product-info__pos-btn-del", value: "\u0423\u0434\u0430\u043B\u0438\u0442\u044C", onClick: this.enterDeletePos })
-                        )
+                        "label",
+                        { htmlFor: "dop-btn-edit", className: "product-info__pos-box-btn-edit" },
+                        _react2.default.createElement("input", { type: "button", id: "dop-btn-edit", className: "product-info__pos-btn-edit", value: "\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C", onClick: this.enterEditPos })
                     )
                 )
             );
@@ -30901,7 +31046,245 @@ var ProductInfo = function (_React$Component) {
 exports.default = ProductInfo;
 
 /***/ }),
-/* 22 */
+/* 24 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(26);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NewProduct = function (_React$Component) {
+    _inherits(NewProduct, _React$Component);
+
+    function NewProduct() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        _classCallCheck(this, NewProduct);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = NewProduct.__proto__ || Object.getPrototypeOf(NewProduct)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+            infoPosition: {},
+            errorValidElem: {},
+            keyDisableSave: false
+        }, _this.checkChange = function (eo) {
+            _this.props.cbEditModeOn();
+            var validElem = _this.validateElem(eo);
+            var statusKeyDisableSave = void 0;
+            var errorValidElemCopy = JSON.parse(JSON.stringify(_this.state.errorValidElem));
+            var infoPositionCopy = JSON.parse(JSON.stringify(_this.state.infoPosition));
+            infoPositionCopy[eo.target.name] = eo.target.value;
+            if (typeof validElem == "boolean") {
+                delete errorValidElemCopy[eo.target.name];
+                statusKeyDisableSave = !(Object.keys(errorValidElemCopy).length === 0);
+            } else {
+                errorValidElemCopy[eo.target.name] = validElem;
+                statusKeyDisableSave = true;
+            }
+            _this.setState({ infoPosition: infoPositionCopy, errorValidElem: errorValidElemCopy, keyDisableSave: statusKeyDisableSave });
+        }, _this.validateElem = function (elem) {
+            switch (elem.target.name) {
+                case "title":
+                    return elem.target.value.length >= 3 && elem.target.value.length <= 50 ? true : "Длина названия 3 - 50 символов!";
+                case "code":
+                    return elem.target.value.length >= 1 && elem.target.value.length <= 5 ? elem.target.value > 0 ? +elem.target.value === _this.props.objInfo.code === _this.props.cbGetListCode().includes(+elem.target.value) ? true : "Данный код существует!" : "Код не может быть меньше 1!" : "Длина кода товара 1 - 5 цифр!";
+                case "photo":
+                    return elem.target.value.length >= 3 ? true : "Используйте img/0.jpeg или URL!";
+                case "lot":
+                    return elem.target.value.length >= 0 && elem.target.value.length <= 10 ? elem.target.value >= 0 ? true : "Укажите положительное количество!" : "Количество товара 0 - <1 млрд!";
+                case "sum":
+                    return elem.target.value.length >= 1 && elem.target.value.length <= 10 ? elem.target.value >= 0 ? true : "Укажите положительную цену!" : "Цена товара 0 - <1 млрд!";
+                case "text":
+                    return elem.target.value.length >= 1 && elem.target.value.length <= 250 ? true : "Длина текста 1 - 250 символов";
+                default:
+                    break;
+            }
+        }, _this.goSubmit = function (eo) {
+            eo.preventDefault();
+            var newInfoProduct = _extends({}, _this.props.objInfo, _this.state.infoPosition);
+            _this.props.cbAddNewPos(newInfoProduct, _this.props.objInfo.code);
+        }, _this.editCancel = function () {
+            _this.props.cbEditModeOff(_this.props.objInfo.code);
+        }, _temp), _possibleConstructorReturn(_this, _ret);
+    }
+
+    _createClass(NewProduct, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                _react.Fragment,
+                null,
+                _react2.default.createElement(
+                    "h2",
+                    { className: "product-new__big-title" },
+                    this.props.mode === 1 ? "Новый товар:" : "Редактировать товар:"
+                ),
+                _react2.default.createElement(
+                    "form",
+                    { className: "product-new__form", onSubmit: this.goSubmit, method: "post", name: "form" },
+                    _react2.default.createElement(
+                        "label",
+                        { htmlFor: "pos-title" },
+                        "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435"
+                    ),
+                    _react2.default.createElement("input", { type: "text",
+                        id: "pos-title",
+                        name: "title",
+                        value: "title" in this.state.infoPosition ? this.state.infoPosition["title"] : this.props.objInfo.title,
+                        onChange: this.checkChange
+                    }),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "product-new__err-msg" },
+                        this.state.errorValidElem["title"]
+                    ),
+                    _react2.default.createElement(
+                        "label",
+                        { htmlFor: "pos-code" },
+                        "\u041A\u043E\u0434 \u0442\u043E\u0432\u0430\u0440\u0430 (NUM)"
+                    ),
+                    _react2.default.createElement("input", { type: "number",
+                        id: "pos-code",
+                        name: "code",
+                        value: "code" in this.state.infoPosition ? this.state.infoPosition["code"] : this.props.objInfo.code,
+                        onChange: this.checkChange
+                    }),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "product-new__err-msg" },
+                        this.state.errorValidElem["code"]
+                    ),
+                    _react2.default.createElement(
+                        "label",
+                        { htmlFor: "pos-photo" },
+                        "\u0424\u043E\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u044F (URL)"
+                    ),
+                    _react2.default.createElement("input", { type: "text",
+                        id: "pos-photo",
+                        name: "photo",
+                        defaultValue: "photo" in this.state.infoPosition ? this.state.infoPosition["photo"] : this.props.objInfo.photo,
+                        onBlur: this.checkChange,
+                        key: Math.random()
+                    }),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "product-list__pos-box-photo product-new__pos-box-photo" },
+                        _react2.default.createElement("img", { src: "photo" in this.state.infoPosition ? this.state.infoPosition["photo"] : this.props.objInfo.photo,
+                            alt: "\u0412\u043D\u0435\u0448\u043D\u0438\u0439 \u0432\u0438\u0434 " + ("title" in this.state.infoPosition ? this.state.infoPosition["title"] : this.props.objInfo.title),
+                            onError: function onError(e) {
+                                return e.target.src = 'img/0.jpeg';
+                            },
+                            className: "product-list__pos-photo product-new__pos-photo" })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "product-new__err-msg" },
+                        this.state.errorValidElem["photo"]
+                    ),
+                    _react2.default.createElement(
+                        "label",
+                        { htmlFor: "pos-lot" },
+                        "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E"
+                    ),
+                    _react2.default.createElement("input", { type: "number",
+                        id: "pos-lot",
+                        name: "lot",
+                        value: "lot" in this.state.infoPosition ? this.state.infoPosition["lot"] : this.props.objInfo.lot,
+                        onChange: this.checkChange
+                    }),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "product-new__err-msg" },
+                        this.state.errorValidElem["lot"]
+                    ),
+                    _react2.default.createElement(
+                        "label",
+                        { htmlFor: "pos-sum" },
+                        "\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C (BYN)"
+                    ),
+                    _react2.default.createElement("input", { type: "number",
+                        id: "pos-sum",
+                        name: "sum",
+                        value: "sum" in this.state.infoPosition ? this.state.infoPosition["sum"] : this.props.objInfo.sum,
+                        onChange: this.checkChange
+                    }),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "product-new__err-msg" },
+                        this.state.errorValidElem["sum"]
+                    ),
+                    _react2.default.createElement(
+                        "label",
+                        { htmlFor: "pos-text" },
+                        "\u041F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B"
+                    ),
+                    _react2.default.createElement("textarea", { id: "pos-text",
+                        name: "text",
+                        value: "text" in this.state.infoPosition ? this.state.infoPosition["text"] : this.props.objInfo.text,
+                        onChange: this.checkChange
+                    }),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "product-new__err-msg" },
+                        this.state.errorValidElem["text"]
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "product-info__pos-box-btn product-new__pos-box-btn" },
+                        _react2.default.createElement(
+                            "label",
+                            { htmlFor: "btn-save" },
+                            _react2.default.createElement("input", { className: "product-info__pos-box-btn-del", type: "submit", id: "btn-save", value: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C", disabled: this.state.keyDisableSave })
+                        ),
+                        _react2.default.createElement(
+                            "label",
+                            { htmlFor: "btn-cancel" },
+                            _react2.default.createElement("input", { className: "product-info__pos-box-btn-edit", type: "button", id: "btn-cancel", value: "\u041E\u0442\u043C\u0435\u043D\u0430", onClick: this.editCancel })
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return NewProduct;
+}(_react2.default.Component);
+
+exports.default = NewProduct;
+
+/***/ }),
+/* 26 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

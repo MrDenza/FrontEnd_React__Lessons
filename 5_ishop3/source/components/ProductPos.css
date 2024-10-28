@@ -22,14 +22,20 @@
     text-align: center;
 }
 .product-list__pos-box-photo {
+    height: 150px;
     padding: 5px;
     border: 2px solid gray;
     border-radius: 5px;
     background-color: white;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .product-list__pos-photo {
     width: 200px;
 	height: 130px;
+    object-fit: contain;
 }
 .product-list__pos-price {
     padding: 15px 0 5px 0;

@@ -24,6 +24,11 @@
 }
 .product-list__title {
     text-align: center;
+    margin: 10px 0;
+}
+.product-list__btn-add-pos {
+    display: flex;
+    justify-content: center;
 }
 .product-list__box {
     margin: 0;
@@ -33,7 +38,4 @@
     flex-wrap: wrap;
 	align-items: stretch;
 	justify-content: center;
-}
-.product-list__box-right {
-    position: relative;
 }
