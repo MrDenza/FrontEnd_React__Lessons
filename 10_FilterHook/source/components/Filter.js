@@ -9,7 +9,7 @@ function sortReturnNewArr(wordsList) {
 }
 
 function filterArrByWord(arrWords, keyWord) { 
-    return arrWords.filter( (word) => { return word.includes(keyWord) } );
+    return arrWords.filter( (word) => { return word.includes(keyWord.toLowerCase()) } );
 }
 // нет необходимости при рендере каждый раз описывать чистые функции выше
 

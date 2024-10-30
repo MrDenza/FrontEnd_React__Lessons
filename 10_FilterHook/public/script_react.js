@@ -30516,7 +30516,7 @@ function sortReturnNewArr(wordsList) {
 
 function filterArrByWord(arrWords, keyWord) {
     return arrWords.filter(function (word) {
-        return word.includes(keyWord);
+        return word.includes(keyWord.toLowerCase());
     });
 }
 // нет необходимости при рендере каждый раз описывать чистые функции выше
