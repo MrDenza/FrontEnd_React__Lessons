@@ -1,54 +1,62 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 
 import "./Filter.css";
 import Controls from "./Controls";
 import List from "./List";
 
+function sortReturnNewArr(wordsList) { 
+    return [...wordsList].sort();
+}
+
+function filterArrByWord(arrWords, keyWord) { 
+    return arrWords.filter( (word) => { return word.includes(keyWord) } );
+}
+// нет необходимости при рендере каждый раз описывать чистые функции выше
+
 function Filter(props) {
-    const [wordsList, setWordsList] = useState(Array.from(props.words));
-    const [noSortWordsList, setNoSortWordsList] = useState([]);
+    const [wordsList, setWordsList] = useState([...props.words]);
     const [statusSort, setStatusSort] = useState(false);
     const [searchWord, setSearchWord] = useState("");
+    const didMount = useRef(false);
 
     const setSorting = (eo) => {
         setStatusSort(eo.target.checked);
-    }
+    };
 
     useEffect( () => {
-            console.log('test');
-            statusSort ? sortingWordsTrue() : sortingWordsFalse();
-        },
-        [statusSort]
+        if (!didMount.current) { return didMount.current = true }
+        updateList();
+        }, [statusSort]
     );
 
-    const sortingWordsTrue = () => {
-        if (statusSort) {
-            setNoSortWordsList(Array.from(wordsList));
-            setWordsList(Array.from(wordsList).sort());
-        }
+    const updateList = (searchElem = searchWord) => {
+        let newListWords = filterArrByWord(props.words, searchElem);
+        statusSort && (newListWords = sortReturnNewArr(newListWords));
+        setWordsList(newListWords);
     };
 
-    const sortingWordsFalse = () => {
-
+    const searchElem = (eo) => {
+        updateList(eo.target.value); 
+        setSearchWord(eo.target.value);
     };
 
-
-
+    const resetFilter = () => {
+        setWordsList([...props.words]);
+        setStatusSort(false);
+        setSearchWord("");
+    };
     
     return (
         <Fragment>
-            <Controls 
-            setSorting={ (eo) => setSorting(eo) }
-            statusSort={statusSort} 
-
-            
-            ></Controls>
-            <List
-            newWordsList={wordsList}
-            ></List>
+            <Controls setSorting={ (eo) => setSorting(eo) }
+                      statusSort={statusSort}
+                      searchElem={ (eo) => searchElem(eo) } 
+                      searchWord={searchWord}
+                      resetFilter={ () => resetFilter()}
+            />
+            <List wordsList={wordsList}/>
         </Fragment>
     );
 }
 
 export default Filter;
-

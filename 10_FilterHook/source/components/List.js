@@ -3,17 +3,16 @@ import React from "react";
 import "./List.css";
 
 const List = (props) => {
-    console.log('list render');
+
+    let wordsListElem = props.wordsList.map( (word, index) => {
+        return <li key={index} className="filter__list-pos">{word}</li>
+    });
+
     return (
         <ul className="filter__list-box">
-            {props.newWordsList}
+            {wordsListElem}
         </ul>
     );
 };
 
 export default List;
-
-
-                // <ul className="filter__list-box">
-                //     {newWordsList}
-                // </ul>

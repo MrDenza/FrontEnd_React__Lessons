@@ -16,18 +16,18 @@ body {
     flex-wrap: wrap;
     flex-direction: column;
 }
+
 .filter__control {
     margin-top: 20px;
 }
 .filter__control-check {
     margin-right: 5px;
 }
-.filter__control-text {
-}
+/* .filter__control-text {
+} */
 .filter__control-btn {
     margin-left: 5px;
-}
-.filter__list-box {
+}.filter__list-box {
     width: 262px;
 	height: 100px;
     background-color: white;

@@ -1,0 +1,11 @@
+.filter__list-box {
+    width: 262px;
+	height: 100px;
+    background-color: white;
+	overflow: auto;
+	padding-left: 20px;
+	border: 1px solid gray;
+}
+.filter__list-pos {
+    list-style-type: none;
+}

@@ -30490,7 +30490,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var _react = __webpack_require__(1);
 
@@ -30498,114 +30498,193 @@ var _react2 = _interopRequireDefault(_react);
 
 __webpack_require__(17);
 
+var _Controls = __webpack_require__(18);
+
+var _Controls2 = _interopRequireDefault(_Controls);
+
+var _List = __webpack_require__(20);
+
+var _List2 = _interopRequireDefault(_List);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function sortReturnNewArr(wordsList) {
+    return [].concat(_toConsumableArray(wordsList)).sort();
+}
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function filterArrByWord(arrWords, keyWord) {
+    return arrWords.filter(function (word) {
+        return word.includes(keyWord);
+    });
+}
+// нет необходимости при рендере каждый раз описывать чистые функции выше
 
-var Filter = function (_React$Component) {
-    _inherits(Filter, _React$Component);
+function Filter(props) {
+    var _useState = (0, _react.useState)([].concat(_toConsumableArray(props.words))),
+        _useState2 = _slicedToArray(_useState, 2),
+        wordsList = _useState2[0],
+        setWordsList = _useState2[1];
 
-    function Filter() {
-        var _ref;
+    var _useState3 = (0, _react.useState)(false),
+        _useState4 = _slicedToArray(_useState3, 2),
+        statusSort = _useState4[0],
+        setStatusSort = _useState4[1];
 
-        var _temp, _this, _ret;
+    var _useState5 = (0, _react.useState)(""),
+        _useState6 = _slicedToArray(_useState5, 2),
+        searchWord = _useState6[0],
+        setSearchWord = _useState6[1];
 
-        _classCallCheck(this, Filter);
+    var didMount = (0, _react.useRef)(false);
 
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
+    var _setSorting = function _setSorting(eo) {
+        setStatusSort(eo.target.checked);
+    };
+
+    (0, _react.useEffect)(function () {
+        if (!didMount.current) {
+            return didMount.current = true;
         }
+        updateList();
+    }, [statusSort]);
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Filter.__proto__ || Object.getPrototypeOf(Filter)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-            wordsList: Array.from(_this.props.words),
-            noSortWordsList: [],
-            statusSort: false,
-            searchWord: ""
-        }, _this.setSorting = function (eo) {
-            _this.setState({ statusSort: eo.target.checked }, function () {
-                //console.log("Статус сортировки: " + this.state.statusSort);
-                _this.state.statusSort ? _this.sortingWordsTrue() : _this.sortingWordsFalse();
-            });
-        }, _this.sortingWordsFalse = function () {
-            _this.setState({ wordsList: _this.state.noSortWordsList, noSortWordsList: [] }, console.log("Статус сортировки: отменена!"));
-        }, _this.sortingWordsTrue = function () {
-            _this.state.statusSort && _this.setState({ noSortWordsList: Array.from(_this.state.wordsList), wordsList: _this.state.wordsList.sort() }, console.log("Статус сортировки: выполнена!"));
-        }, _this.searchElem = function (eo) {
-            console.log("Поиск: " + eo.target.value);
-            _this.setState({ searchWord: eo.target.value }, _this.filterByElem);
-        }, _this.filterByElem = function () {
-            var newUseList = _this.props.words.filter(function (word) {
-                return word.includes(_this.state.searchWord);
-            });
-            _this.setState({ wordsList: newUseList }, _this.sortingWordsTrue); //!Функция фильтра
-        }, _this.resetFilter = function () {
-            console.log("Сброс фильтра!");
-            _this.setState({
-                wordsList: Array.from(_this.props.words),
-                noSortWordsList: [],
-                statusSort: false,
-                searchWord: ""
-            });
-        }, _temp), _possibleConstructorReturn(_this, _ret);
-    }
-    // --------------------------------------------------
+    var updateList = function updateList() {
+        var searchElem = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : searchWord;
 
+        var newListWords = filterArrByWord(props.words, searchElem);
+        statusSort && (newListWords = sortReturnNewArr(newListWords));
+        setWordsList(newListWords);
+    };
 
-    _createClass(Filter, [{
-        key: "render",
+    var _searchElem = function _searchElem(eo) {
+        updateList(eo.target.value);
+        setSearchWord(eo.target.value);
+    };
 
-        // --------------------------------------------------
-        value: function render() {
-            var newWordsList = this.state.wordsList.map(function (word, index) {
-                return _react2.default.createElement(
-                    "li",
-                    { key: index, className: "filter__list-pos" },
-                    word
-                );
-            });
+    var _resetFilter = function _resetFilter() {
+        setWordsList([].concat(_toConsumableArray(props.words)));
+        setStatusSort(false);
+        setSearchWord("");
+    };
 
-            return _react2.default.createElement(
-                _react.Fragment,
-                null,
-                _react2.default.createElement(
-                    "div",
-                    { className: "filter__control" },
-                    _react2.default.createElement(
-                        "label",
-                        { htmlFor: "filter-check" },
-                        _react2.default.createElement("input", { type: "checkbox", className: "filter__control-check", id: "filter-check", onChange: this.setSorting, checked: this.state.statusSort })
-                    ),
-                    _react2.default.createElement(
-                        "label",
-                        { htmlFor: "filter-text" },
-                        _react2.default.createElement("input", { type: "text", className: "filter__control-text", id: "filter-text", value: this.state.searchWord, onChange: this.searchElem })
-                    ),
-                    _react2.default.createElement(
-                        "label",
-                        { htmlFor: "filter-btn" },
-                        _react2.default.createElement("input", { type: "button", className: "filter__control-btn", id: "filter-btn", value: "\u0421\u0431\u0440\u043E\u0441", onClick: this.resetFilter })
-                    )
-                ),
-                _react2.default.createElement(
-                    "ul",
-                    { className: "filter__list-box" },
-                    newWordsList
-                )
-            );
-        }
-    }]);
-
-    return Filter;
-}(_react2.default.Component);
+    return _react2.default.createElement(
+        _react.Fragment,
+        null,
+        _react2.default.createElement(_Controls2.default, { setSorting: function setSorting(eo) {
+                return _setSorting(eo);
+            },
+            statusSort: statusSort,
+            searchElem: function searchElem(eo) {
+                return _searchElem(eo);
+            },
+            searchWord: searchWord,
+            resetFilter: function resetFilter() {
+                return _resetFilter();
+            }
+        }),
+        _react2.default.createElement(_List2.default, { wordsList: wordsList })
+    );
+}
 
 exports.default = Filter;
 
 /***/ }),
 /* 17 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(19);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Controls = function Controls(props) {
+    return _react2.default.createElement(
+        "div",
+        { className: "filter__control" },
+        _react2.default.createElement(
+            "label",
+            { htmlFor: "filter-check" },
+            _react2.default.createElement("input", { type: "checkbox", className: "filter__control-check", id: "filter-check", onChange: props.setSorting, checked: props.statusSort })
+        ),
+        _react2.default.createElement(
+            "label",
+            { htmlFor: "filter-text" },
+            _react2.default.createElement("input", { type: "text", className: "filter__control-text", id: "filter-text", value: props.searchWord, onChange: props.searchElem })
+        ),
+        _react2.default.createElement(
+            "label",
+            { htmlFor: "filter-btn" },
+            _react2.default.createElement("input", { type: "button", className: "filter__control-btn", id: "filter-btn", value: "\u0421\u0431\u0440\u043E\u0441", onClick: props.resetFilter })
+        )
+    );
+};
+
+exports.default = Controls;
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(21);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var List = function List(props) {
+
+    var wordsListElem = props.wordsList.map(function (word, index) {
+        return _react2.default.createElement(
+            "li",
+            { key: index, className: "filter__list-pos" },
+            word
+        );
+    });
+
+    return _react2.default.createElement(
+        "ul",
+        { className: "filter__list-box" },
+        wordsListElem
+    );
+};
+
+exports.default = List;
+
+/***/ }),
+/* 21 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
