@@ -26,17 +26,22 @@ function Filter(props) {
     useEffect( () => {
         if (!didMount.current) { return didMount.current = true }
         updateList();
-        }, [statusSort]
+        }, [statusSort, searchWord]
     );
 
-    const updateList = (searchElem = searchWord) => {
-        let newListWords = filterArrByWord(props.words, searchElem);
+    const updateList = (searchElem = searchWord, runSorting = statusSort) => {
+        let newListWords = filterArrByWord(props.words, searchWord);
         statusSort && (newListWords = sortReturnNewArr(newListWords));
         setWordsList(newListWords);
     };
+    // const updateList = (searchElem = searchWord, runSorting = statusSort) => {
+    //     let newListWords = filterArrByWord(props.words, searchWord);
+    //     runSorting && (newListWords = sortReturnNewArr(newListWords));
+    //     setWordsList(newListWords);
+    // };
 
     const searchElem = (eo) => {
-        updateList(eo.target.value); 
+        //updateList(eo.target.value); 
         setSearchWord(eo.target.value);
     };
 
