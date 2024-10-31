@@ -30551,9 +30551,6 @@ function Filter(props) {
     }, [statusSort, searchWord]);
 
     var updateList = function updateList() {
-        var searchElem = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : searchWord;
-        var runSorting = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : statusSort;
-
         var newListWords = filterArrByWord(props.words, searchWord);
         statusSort && (newListWords = sortReturnNewArr(newListWords));
         setWordsList(newListWords);

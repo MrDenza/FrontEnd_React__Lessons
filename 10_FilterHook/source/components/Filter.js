@@ -29,7 +29,7 @@ function Filter(props) {
         }, [statusSort, searchWord]
     );
 
-    const updateList = (searchElem = searchWord, runSorting = statusSort) => {
+    const updateList = () => {
         let newListWords = filterArrByWord(props.words, searchWord);
         statusSort && (newListWords = sortReturnNewArr(newListWords));
         setWordsList(newListWords);
