@@ -1,0 +1,20 @@
+.table-clients {
+    margin: 15px 0;
+	outline: 3px solid #ffd300;
+	background: #fff!important;
+}
+.table-clients th {
+    width: 220px;
+    height: 40px;
+	font-weight: bold;
+	background: #ffd300;
+    border: none;
+	text-align: center;
+}
+.table-clients td {
+	padding: 7px;
+	border: none;
+    text-align: center;
+	border-top: 3px solid #fff;
+	border-bottom: 3px solid #fff;
+}
