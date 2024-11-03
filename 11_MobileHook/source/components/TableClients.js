@@ -31,6 +31,7 @@ function TableClients(props) {
     const [filterMode, setFilterMode] = useState(0);
 
     useEffect( () => {
+        // componentDidMount
         eventFlow.on("editPos", editClient);
         eventFlow.on("savePos", saveClient);
         eventFlow.on("delPos", delClient);
@@ -39,6 +40,7 @@ function TableClients(props) {
         eventFlow.on("filterActive", filterActive);
         eventFlow.on("filterBlocked", filterBlocked);
         return () => {
+            // componentDidUpdate c [clientsArr, filterMode]
             eventFlow.removeListener("editPos", editClient);
             eventFlow.removeListener("savePos", saveClient);
             eventFlow.removeListener("delPos", delClient);
@@ -48,6 +50,19 @@ function TableClients(props) {
             eventFlow.removeListener("filterBlocked", filterBlocked);
         }
     }, [clientsArr, filterMode]);
+
+    // useEffect( () => {
+    //     return () => {
+    //         // componentWillUnmount
+    //         eventFlow.removeListener("editPos", editClient);
+    //         eventFlow.removeListener("savePos", saveClient);
+    //         eventFlow.removeListener("delPos", delClient);
+    //         eventFlow.removeListener("cancelEdit", cancelEdit);
+    //         eventFlow.removeListener("filterAll", filterAll);
+    //         eventFlow.removeListener("filterActive", filterActive);
+    //         eventFlow.removeListener("filterBlocked", filterBlocked);
+    //     }
+    // }, []);
 
     const editClient = (id) => setEditClientId(id);
     const cancelEdit = () => setEditClientId(-1);
