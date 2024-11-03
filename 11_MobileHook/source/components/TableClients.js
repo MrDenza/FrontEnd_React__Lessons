@@ -30,7 +30,7 @@ function TableClients(props) {
     const [editClientId, setEditClientId] = useState(-1);
     const [filterMode, setFilterMode] = useState(0);
 
-    useEffect( () => {
+    useEffect( () => { // создаём слушайтелей и обновляем слушателей при изменениях clientsArr и filterMode
         // componentDidMount
         eventFlow.on("editPos", editClient);
         eventFlow.on("savePos", saveClient);
@@ -39,8 +39,22 @@ function TableClients(props) {
         eventFlow.on("filterAll", filterAll);
         eventFlow.on("filterActive", filterActive);
         eventFlow.on("filterBlocked", filterBlocked);
+
         return () => {
-            // componentDidUpdate c [clientsArr, filterMode]
+            // componentDidUpdate c [clientsArr, filterMode]   
+            eventFlow.removeListener("savePos", saveClient);
+            eventFlow.removeListener("delPos", delClient);
+            //eventFlow.removeListener("editPos", editClient);
+            //eventFlow.removeListener("cancelEdit", cancelEdit);
+            //eventFlow.removeListener("filterAll", filterAll);
+            //eventFlow.removeListener("filterActive", filterActive);
+            //eventFlow.removeListener("filterBlocked", filterBlocked);
+        }
+    }, [clientsArr, filterMode]);
+
+    useEffect( () => { // удаляем слушателей при размонтировании компонента
+        return () => {
+            // componentWillUnmount
             eventFlow.removeListener("editPos", editClient);
             eventFlow.removeListener("savePos", saveClient);
             eventFlow.removeListener("delPos", delClient);
@@ -49,20 +63,7 @@ function TableClients(props) {
             eventFlow.removeListener("filterActive", filterActive);
             eventFlow.removeListener("filterBlocked", filterBlocked);
         }
-    }, [clientsArr, filterMode]);
-
-    // useEffect( () => {
-    //     return () => {
-    //         // componentWillUnmount
-    //         eventFlow.removeListener("editPos", editClient);
-    //         eventFlow.removeListener("savePos", saveClient);
-    //         eventFlow.removeListener("delPos", delClient);
-    //         eventFlow.removeListener("cancelEdit", cancelEdit);
-    //         eventFlow.removeListener("filterAll", filterAll);
-    //         eventFlow.removeListener("filterActive", filterActive);
-    //         eventFlow.removeListener("filterBlocked", filterBlocked);
-    //     }
-    // }, []);
+    }, []);
 
     const editClient = (id) => setEditClientId(id);
     const cancelEdit = () => setEditClientId(-1);
@@ -145,3 +146,5 @@ function TableClients(props) {
 }
 
 export default memo(TableClients);
+
+
