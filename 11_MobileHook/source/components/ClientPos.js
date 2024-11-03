@@ -8,7 +8,7 @@ function ClientPos(props) {
     const editPos = () => eventFlow.emit("editPos", props.clientInfo.id);
     const delPos = () => confirm("Подтверждаете удаление клиента?") && eventFlow.emit("delPos", props.clientInfo.id);
 
-    console.log(`Render ClientForm. ID - ${props.clientInfo.id}`);
+    console.log(`Render ClientPos. ID - ${props.clientInfo.id}`);
     return (
         <tr>
             <td>{props.clientInfo.f}</td>

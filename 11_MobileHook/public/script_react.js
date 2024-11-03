@@ -30592,7 +30592,6 @@ function TableClients(props) {
         setFilterMode = _useState6[1];
 
     (0, _react.useEffect)(function () {
-        // создаём слушайтелей и обновляем слушателей при изменениях clientsArr и filterMode
         // componentDidMount
         _eventEmitter.eventFlow.on("editPos", editClient);
         _eventEmitter.eventFlow.on("savePos", saveClient);
@@ -30603,24 +30602,10 @@ function TableClients(props) {
         _eventEmitter.eventFlow.on("filterBlocked", filterBlocked);
 
         return function () {
-            // componentDidUpdate c [clientsArr, filterMode]   
-            _eventEmitter.eventFlow.removeListener("savePos", saveClient);
-            _eventEmitter.eventFlow.removeListener("delPos", delClient);
-            //eventFlow.removeListener("editPos", editClient);
-            //eventFlow.removeListener("cancelEdit", cancelEdit);
-            //eventFlow.removeListener("filterAll", filterAll);
-            //eventFlow.removeListener("filterActive", filterActive);
-            //eventFlow.removeListener("filterBlocked", filterBlocked);
-        };
-    }, [clientsArr, filterMode]);
-
-    (0, _react.useEffect)(function () {
-        // удаляем слушателей при размонтировании компонента
-        return function () {
             // componentWillUnmount
-            _eventEmitter.eventFlow.removeListener("editPos", editClient);
             _eventEmitter.eventFlow.removeListener("savePos", saveClient);
             _eventEmitter.eventFlow.removeListener("delPos", delClient);
+            _eventEmitter.eventFlow.removeListener("editPos", editClient);
             _eventEmitter.eventFlow.removeListener("cancelEdit", cancelEdit);
             _eventEmitter.eventFlow.removeListener("filterAll", filterAll);
             _eventEmitter.eventFlow.removeListener("filterActive", filterActive);
@@ -30655,25 +30640,28 @@ function TableClients(props) {
     };
 
     var saveClient = function saveClient(obj) {
-        var newClientsArr = [].concat(_toConsumableArray(clientsArr));
-        if (obj.id === 0) {
-            var idClient = generateNewId(getIdList());
-            newClientsArr.push(_extends({}, obj, { id: idClient }));
-        } else {
-            var indexPos = newClientsArr.findIndex(function (pos) {
-                return pos.id === obj.id;
-            });
-            newClientsArr[indexPos] = obj;
-        }
-        setClientsArr(newClientsArr);
+        setClientsArr(function (clientsArr) {
+            var newClientsArr = [].concat(_toConsumableArray(clientsArr));
+            if (obj.id === 0) {
+                var idClient = generateNewId(getIdList());
+                newClientsArr.push(_extends({}, obj, { id: idClient }));
+            } else {
+                var indexPos = newClientsArr.findIndex(function (pos) {
+                    return pos.id === obj.id;
+                });
+                newClientsArr[indexPos] = obj;
+            }
+            return newClientsArr;
+        });
         setEditClientId(-1);
     };
 
     var delClient = function delClient(id) {
-        var newClientsArr = [].concat(_toConsumableArray(clientsArr)).filter(function (elem) {
-            return elem.id !== id;
+        setClientsArr(function (clientsArr) {
+            return clientsArr.filter(function (elem) {
+                return elem.id !== id;
+            });
         });
-        setClientsArr(newClientsArr);
     };
 
     var filteredListClients = clientsArr.filter(function (client) {
@@ -31107,7 +31095,7 @@ function ClientPos(props) {
         return confirm("Подтверждаете удаление клиента?") && _eventEmitter.eventFlow.emit("delPos", props.clientInfo.id);
     };
 
-    console.log("Render ClientForm. ID - " + props.clientInfo.id);
+    console.log("Render ClientPos. ID - " + props.clientInfo.id);
     return _react2.default.createElement(
         "tr",
         null,

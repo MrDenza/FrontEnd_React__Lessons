@@ -30,7 +30,7 @@ function TableClients(props) {
     const [editClientId, setEditClientId] = useState(-1);
     const [filterMode, setFilterMode] = useState(0);
 
-    useEffect( () => { // создаём слушайтелей и обновляем слушателей при изменениях clientsArr и filterMode
+    useEffect( () => {
         // componentDidMount
         eventFlow.on("editPos", editClient);
         eventFlow.on("savePos", saveClient);
@@ -41,23 +41,10 @@ function TableClients(props) {
         eventFlow.on("filterBlocked", filterBlocked);
 
         return () => {
-            // componentDidUpdate c [clientsArr, filterMode]   
-            eventFlow.removeListener("savePos", saveClient);
-            eventFlow.removeListener("delPos", delClient);
-            //eventFlow.removeListener("editPos", editClient);
-            //eventFlow.removeListener("cancelEdit", cancelEdit);
-            //eventFlow.removeListener("filterAll", filterAll);
-            //eventFlow.removeListener("filterActive", filterActive);
-            //eventFlow.removeListener("filterBlocked", filterBlocked);
-        }
-    }, [clientsArr, filterMode]);
-
-    useEffect( () => { // удаляем слушателей при размонтировании компонента
-        return () => {
             // componentWillUnmount
-            eventFlow.removeListener("editPos", editClient);
             eventFlow.removeListener("savePos", saveClient);
             eventFlow.removeListener("delPos", delClient);
+            eventFlow.removeListener("editPos", editClient);
             eventFlow.removeListener("cancelEdit", cancelEdit);
             eventFlow.removeListener("filterAll", filterAll);
             eventFlow.removeListener("filterActive", filterActive);
@@ -80,21 +67,22 @@ function TableClients(props) {
     };
 
     const saveClient = (obj) => {
-        let newClientsArr = [...clientsArr];
-        if (obj.id === 0) {
-            let idClient = generateNewId( getIdList() );
-            newClientsArr.push({...obj, id: idClient});
-        } else {
-            let indexPos = newClientsArr.findIndex(pos => pos.id === obj.id);
-            newClientsArr[indexPos] = obj;
-        }
-        setClientsArr(newClientsArr);
+        setClientsArr(clientsArr => {
+            let newClientsArr = [...clientsArr];
+            if (obj.id === 0) {
+                let idClient = generateNewId( getIdList() );
+                newClientsArr.push({...obj, id: idClient});
+            } else {
+                let indexPos = newClientsArr.findIndex(pos => pos.id === obj.id);
+                newClientsArr[indexPos] = obj;
+            }
+            return newClientsArr;
+        });
         setEditClientId(-1);
     };
 
     const delClient = (id) => {
-        let newClientsArr = [...clientsArr].filter((elem) => elem.id !== id);
-        setClientsArr(newClientsArr);
+        setClientsArr((clientsArr) => clientsArr.filter((elem) => elem.id !== id));
     };
     
     let filteredListClients = clientsArr.filter( (client) => {
