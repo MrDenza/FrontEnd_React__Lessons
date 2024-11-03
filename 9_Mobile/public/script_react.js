@@ -30644,13 +30644,13 @@ var TableClients = function (_React$PureComponent) {
             _eventEmitter.eventFlow.on("filterBlocked", _this.filterBlocked);
         }, _this.componentWillUnmount = function () {
             // отписываемся
-            _eventEmitter.eventFlow.off("editPos", _this.editClient);
-            _eventEmitter.eventFlow.off("savePos", _this.saveClient);
-            _eventEmitter.eventFlow.off("delPos", _this.delClient);
-            _eventEmitter.eventFlow.off("cancelEdit", _this.cancelEdit);
-            _eventEmitter.eventFlow.off("filterAll", _this.filterAll);
-            _eventEmitter.eventFlow.off("filterActive", _this.filterActive);
-            _eventEmitter.eventFlow.off("filterBlocked", _this.filterBlocked);
+            _eventEmitter.eventFlow.removeListener("editPos", _this.editClient);
+            _eventEmitter.eventFlow.removeListener("savePos", _this.saveClient);
+            _eventEmitter.eventFlow.removeListener("delPos", _this.delClient);
+            _eventEmitter.eventFlow.removeListener("cancelEdit", _this.cancelEdit);
+            _eventEmitter.eventFlow.removeListener("filterAll", _this.filterAll);
+            _eventEmitter.eventFlow.removeListener("filterActive", _this.filterActive);
+            _eventEmitter.eventFlow.removeListener("filterBlocked", _this.filterBlocked);
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 

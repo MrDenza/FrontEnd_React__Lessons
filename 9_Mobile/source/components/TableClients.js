@@ -74,13 +74,13 @@ class TableClients extends React.PureComponent {
     };
 
     componentWillUnmount = () => { // отписываемся
-        eventFlow.off("editPos", this.editClient);
-        eventFlow.off("savePos", this.saveClient);
-        eventFlow.off("delPos", this.delClient);
-        eventFlow.off("cancelEdit", this.cancelEdit);
-        eventFlow.off("filterAll", this.filterAll);
-        eventFlow.off("filterActive", this.filterActive);
-        eventFlow.off("filterBlocked", this.filterBlocked);
+        eventFlow.removeListener("editPos", this.editClient);
+        eventFlow.removeListener("savePos", this.saveClient);
+        eventFlow.removeListener("delPos", this.delClient);
+        eventFlow.removeListener("cancelEdit", this.cancelEdit);
+        eventFlow.removeListener("filterAll", this.filterAll);
+        eventFlow.removeListener("filterActive", this.filterActive);
+        eventFlow.removeListener("filterBlocked", this.filterBlocked);
     }
 
     render() {
