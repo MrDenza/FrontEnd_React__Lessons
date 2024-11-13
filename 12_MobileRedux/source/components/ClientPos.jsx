@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { eventFlow } from './js-modules/eventEmitter';
+import { eventFlow } from '../js-modules/eventEmitter';
 
 import './ClientPos.css';
 

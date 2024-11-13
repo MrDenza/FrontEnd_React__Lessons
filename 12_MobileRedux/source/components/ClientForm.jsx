@@ -1,5 +1,5 @@
 import React, { memo, useRef } from 'react';
-import { eventFlow } from './js-modules/eventEmitter';
+import { eventFlow } from '../js-modules/eventEmitter';
 
 import './ClientForm.css';
 
@@ -67,7 +67,7 @@ function ClientForm(props) {
                     ></input>
                 </label>
             </td>
-            <td className="table__td_zero"></td>
+            <td className="table__td_null"></td>
             <td>
                 <label htmlFor="btn-edit">
                     <input

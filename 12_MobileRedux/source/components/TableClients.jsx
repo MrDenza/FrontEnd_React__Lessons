@@ -1,5 +1,5 @@
 import { Fragment, memo, useState, useEffect, useRef } from 'react';
-import { eventFlow } from './js-modules/eventEmitter';
+import { eventFlow } from '../js-modules/eventEmitter';
 import { useDispatch, useSelector } from 'react-redux';
 import { clientsLoad } from '../redux/clientsLoad';
 import { savedClient, deleteClient } from '../redux/clientsSlice';
@@ -75,7 +75,6 @@ function TableClients(props) {
     ) : '';
     
     console.log('Render TableClients');
-    console.log(clientsDB.dataLoadState);
     return (
         <Fragment>
             <ControlBtn/>
