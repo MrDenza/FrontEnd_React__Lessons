@@ -1,0 +1,9 @@
+.table__td_bolder {
+    font-weight: bold;
+}
+.table__td_active {
+    background-color: greenyellow;
+}
+.table__td_blocked {
+    background-color: red;
+}
