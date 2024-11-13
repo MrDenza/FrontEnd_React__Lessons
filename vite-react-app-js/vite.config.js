@@ -13,6 +13,7 @@ import { resolve } from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), /*fullReloadAlways*/],
+
   server: {
   port: 3000,
   },
@@ -28,6 +29,7 @@ export default defineConfig({
   //   },
   build: {
     outDir: './public',
+    //copyPublicDir: false, // устраняет ошибку The public directory feature may not work correctly. outDir __ and publicDir __ are not separate folders.
     assetsDir: '', // Leave `assetsDir` empty so that all static resources are placed in the root of the `dist` folder.
     assetsInlineLimit: 0,
     rollupOptions: {
